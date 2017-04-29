@@ -1,6 +1,9 @@
 -- drop function
 DROP FUNCTION if exists get_sujet_by_part(int);
 drop function if exists signin(varchar,varchar,varchar,varchar);
+drop function if exists verifUtilisateurs(varchar, varchar);
+drop function if exists modifName(varchar, varchar);
+drop function if exists modifDesc(varchar, text);
 
 -- RULE
 drop RULE if exists member_insert_1 on get_members;
