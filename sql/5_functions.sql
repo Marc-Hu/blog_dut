@@ -23,7 +23,7 @@ CREATE OR REPLACE FUNCTION is_valid_username(username varchar)
 $$
 BEGIN
   RETURN QUERY
-  SELECT count(mem_id)
+  SELECT count(m.username)
     FROM get_members as m
       WHERE m.username=$1;
 END;

@@ -106,9 +106,11 @@ function action_inscription(){
 		if(bool_form_password && bool_form_username && bool_form_email){
 			$.post(api, data)
 			.done(function(data){
-				console.log(data);
-				if(data.valid==true)
+				data = JSON.parse(data);
+
+				if(data.valid==true){
 					console.log('test');
+				}
 			})
 			.fail(function(e){
 				console.log(e);
