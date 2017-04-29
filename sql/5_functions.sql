@@ -58,21 +58,12 @@ END;
 $$ LANGUAGE plpgsql;
 
 --Modif desc profil
-create or replace function modifDesc(in nom_utilisateur varchar, in new_description text)
-RETURNS boolean AS
+create or replace function modifDesc(in nom_utilisateur varchar, in new_desc text)
+RETURNS void AS
 $$
-  DECLARE
-    verif int := 0;
-  BEGIN
-    UPDATE get_members SET desc_uti=new_description where username=nom_utilisateur;
-    verif:=sql%rowcount;
-    if verif = 1 then
-      return true;
-    end if;
-    return false;
-  END;
-$$ language plpgsql;
-/*
+  UPDATE get_members SET desc_uti=new_desc where username=nom_utilisateur;
+$$ language sql;
+
 --modif name
 create or replace function modifName(in nom_utilisateur varchar, in new_name varchar)
 RETURNS void AS
@@ -93,4 +84,60 @@ RETURNS void AS
 $$
   UPDATE get_members SET email=new_email where username=nom_utilisateur;
 $$ language sql;
-*/
+
+--ajout d'un post avec un tag
+create or replace function ajoutPostAvecTag(in titre varchar, in tagNum integer)
+Returns void AS
+$$
+  INSERT INTO get_sujets(suj_name, suj_tag) VALUES (titre, tagNum);
+$$ language sql;
+
+--ajout d'un post sans tag
+create or replace function ajoutPostSansTag(in titre varchar)
+Returns void AS
+$$
+  INSERT INTO get_sujets(suj_name, suj_tag) VALUES (titre, null);
+$$ language sql;
+
+--ajout d'un message
+create or replace function ajoutMessage(in parent integer, in auteur integer, in sujet integer, in contenu text)
+Returns void AS
+$$
+  INSERT INTO get_messages(msg_parent, msg_author, msg_subject, msg_body) VALUES (parent, auteur, sujet, contenu);
+$$ language sql;
+
+--modifie le contenu d'un message
+create or replace function modifMessage(in idMess integer, in contenu text)
+Returns void as
+$$
+  UPDATE get_messages SET msg_body=contenu where msg_id=idMess;
+$$ language sql;
+
+
+CREATE OR REPLACE FUNCTION messages_fils(in pere integer)
+RETURNS TABLE (id integer, auteur integer, contenu text, creation timestamp) AS
+$$
+  SELECT msg_id, msg_author, msg_body, created_at 
+      FROM messages
+        WHERE msg_parent=pere
+          ORDER BY msg_id ASC;
+$$ language SQL;
+
+CREATE OR REPLACE FUNCTION messages_sujet(in sujet integer)
+RETURNS TABLE (id integer, auteur integer, contenu text, creation timestamp) AS
+$$
+  SELECT msg_id, msg_author, msg_body, created_at 
+      FROM get_messages
+        WHERE msg_subject=sujet AND msg_parent=null
+          ORDER BY msg_id ASC;
+$$ language SQL;
+
+--renvoie un tableau qui contient tous les sujets d'un tag entré en paramètre
+CREATE OR REPLACE FUNCTION sujet_tag(in tag integer)
+RETURNS TABLE (nom varchar, crea timestamp, modif timestamp, tag integer) AS
+$$
+  SELECT suj_name, suj_created_at, suj_updated_at, suj_tag 
+    FROM get_sujets
+      WHERE suj_tag=tag AND suj_hide=false
+        ORDER BY suj_id ASC;
+$$ language SQL;

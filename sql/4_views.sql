@@ -56,3 +56,25 @@ create or replace RULE member_insert_3 as
 	on insert to get_members
   		do instead
     		Nothing;
+
+
+CREATE OR REPLACE RULE message_insert1 as
+	on INSERT to get_messages WHERE msg_parent<>null
+		DO instead
+		(
+			INSERT INTO messages (msg_parent, msg_author, msg_subject, msg_body) values
+			(NEW.msg_parent, NEW.msg_author, NEW.msg_subject, NEW.msg_body);
+		);
+
+CREATE OR REPLACE RULE message_insert2 as
+	on INSERT to get_messages WHERE msg_parent=null
+		DO instead
+		(
+			INSERT INTO messages (msg_author, msg_subject, msg_body) values
+			(NEW.msg_author, NEW.msg_subject, NEW.msg_body);
+		);
+
+CREATE OR REPLACE RULE message_insert3 as
+	on INSERT to get_messages
+		DO instead
+			NOTHING;

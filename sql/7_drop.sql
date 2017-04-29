@@ -4,11 +4,22 @@ drop function if exists signin(varchar,varchar,varchar,varchar);
 drop function if exists verifUtilisateurs(varchar, varchar);
 drop function if exists modifName(varchar, varchar);
 drop function if exists modifDesc(varchar, text);
+drop function if exists modifPassword(varchar, varchar);
+drop function if exists modifEmail(varchar, varchar);
+drop function if exists ajoutPostAvecTag(varchar, integer);
+drop function if exists ajoutPostSanstag(varchar);
+drop function if exists ajoutMessage(integer, integer, integer, text);
+drop function if exists messages_fils(integer);
+drop function if exists messages_sujet(integer);
+drop function if exists sujet_tag(integer);
 
 -- RULE
 drop RULE if exists member_insert_1 on get_members;
 drop RULE if exists member_insert_2 on get_members;
 drop RULE if exists member_insert_3 on get_members;
+drop RULE if exists message_insert1 on get_message;
+drop RULE if exists message_insert2 on get_message;
+drop RULE if exists message_insert3 on get_message;
 
 -- drop view
 drop view if exists get_sujets;
