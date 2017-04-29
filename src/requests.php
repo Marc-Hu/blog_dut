@@ -110,8 +110,8 @@ function signup($name, $username, $email, $password){
 
     // éxécution
     if($stmt->execute()){
-        $nbRow = $stmt->fetchAll(\PDO::FETCH_OBJ)[0];
-        return $nbRow->valid;
+        $nbRow = $stmt->fetchAll(\PDO::FETCH_OBJ)[0];   
+        return true;
     }else{
         throw new exception(__FUNCTION__.' Erreur SQL : '.$req);
     }

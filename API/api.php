@@ -27,7 +27,9 @@ switch ($action) {
 				$name = "";
 			}
 
-			signup($name, $_POST['email'], $_POST['username'], $_POST['password']);
+			if(signup($name, $_POST['email'], $_POST['username'], $_POST['password'])==true){
+				echo json_encode(["valid"=>true]);
+			}
 		}
 	break;
 

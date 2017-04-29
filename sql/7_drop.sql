@@ -5,6 +5,7 @@ drop function if exists signin(varchar,varchar,varchar,varchar);
 -- RULE
 drop RULE if exists member_insert_1 on get_members;
 drop RULE if exists member_insert_2 on get_members;
+drop RULE if exists member_insert_3 on get_members;
 
 -- drop view
 drop view if exists get_sujets;

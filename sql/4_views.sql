@@ -42,6 +42,7 @@ CREATE or replace RULE member_insert_1 as
 		(NEW.username, NEW.name, NEW.email, NEW.password);
     );
 
+
 -- sans les noms de l'utilisateur
 CREATE or replace RULE member_insert_2 as 
     on INSERT to get_members where NEW.name=''
@@ -50,3 +51,8 @@ CREATE or replace RULE member_insert_2 as
 		INSERT INTO members(username, email, password) values
 		(NEW.username, NEW.email, NEW.password);
     );
+
+create or replace RULE member_insert_3 as 
+	on insert to get_members
+  		do instead
+    		Nothing;
