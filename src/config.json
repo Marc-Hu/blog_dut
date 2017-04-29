@@ -1,0 +1,9 @@
+{
+	"db" : {
+		"driver": "pgsql",
+		"host": "localhost",
+		"login": "blog",
+		"mdp": "blog123456789",
+		"database": "blogdut"
+	}
+}
