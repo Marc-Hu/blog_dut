@@ -20,7 +20,7 @@ $sujets = allSubjects($pag->pos);
 // on récupère tous les tags qu'il faut
 $tags = allTags();
 
-// gestion du cas ou l'a'
+// gestion du cas ou la pagination vaut 0
 if($sujets != false && $pag->pagination == 0)
     $pag->pagination = 1;
 ?>
