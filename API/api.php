@@ -16,7 +16,7 @@ switch ($action) {
 		if(isset($_POST['username'])){
 			echo json_encode(["valid"=>is_valid_username($_POST['username'])]);
 		}
-		break;
+	break;
 	
 	case 'signin':
 		if(isset($_POST['email']) && isset($_POST['username']) && isset($_POST['password'])){

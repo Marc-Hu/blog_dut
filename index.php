@@ -73,13 +73,15 @@ if($sujets != false && $pag->pagination == 0)
         <h2>Les Tags</h2>
         <ul class="list-inline">
 			<?php
-				// affichage recherche par tag
-				foreach ($tags as $tag) {
-					echo "<li>
-					  <a href='bytag.php?id=$tag->tag_id'>
-					    <span class='label label-default'>$tag->tag_id - $tag->name</span>
-					  </a>
-					</li>";
+				if($tags != false){
+					// affichage recherche par tag
+					foreach ($tags as $tag) {
+						echo "<li>
+						  <a href='bytag.php?id=$tag->tag_id'>
+						    <span class='label label-default'>$tag->tag_id - $tag->name</span>
+						  </a>
+						</li>";
+					}
 				}
 			?>
         </ul>
