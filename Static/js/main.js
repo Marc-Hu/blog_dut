@@ -14,6 +14,8 @@ $(document).ready(function(){
 	}
 });
 
+
+// action inscription
 function action_inscription(){
 	// gestion du champ comfirmation mdp
 	function valid_password(){
@@ -117,6 +119,8 @@ function action_inscription(){
 	valid_email_form();
 }
 
+
+// check an email
 function valid_email(email){
 	var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	return re.test(email);

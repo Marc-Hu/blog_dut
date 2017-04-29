@@ -36,7 +36,7 @@ CREATE OR REPLACE VIEW get_members
 -- avec le nom de l'utilisateur
 CREATE or replace RULE member_insert_1 as 
     on INSERT to get_members where NEW.name<>''
-  DO instead 
+  DO instead
     (
 		INSERT INTO members(username, name, email, password) values
 		(NEW.username, NEW.name, NEW.email, NEW.password);
