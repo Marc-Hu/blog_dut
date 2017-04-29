@@ -3,7 +3,7 @@
 require_once __DIR__.'/src/functions.php';
 require_once __DIR__.'/src/requests.php';
 
-include_once __DIR__.'/templates/header.html';
+include_once __DIR__.'/templates/header.php';
 
 if(isset($_GET['page'])){
 	$page = $_GET['page'];
@@ -23,5 +23,5 @@ switch ($page) {
 		break;
 }
 
-include_once __DIR__.'/templates/footer.html';
+include_once __DIR__.'/templates/footer.php';
 ?>
