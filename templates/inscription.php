@@ -1,6 +1,3 @@
-<?php
-include_once __DIR__.'/templates/header.html';
-?>
 <div class="box">
 	<div class="form-group">
 		<label for="username">Pseudo * : </label>
@@ -26,6 +23,4 @@ include_once __DIR__.'/templates/header.html';
 		<button class="btn hide" id="valid_inscription">S'inscrire</button>
 	</div>
 </div>
-<?php
-include_once __DIR__.'/templates/footer.html';
-?>
+
