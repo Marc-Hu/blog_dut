@@ -91,7 +91,7 @@ function action_inscription(){
 		if(e.which == 3)
 				return;
 
-		var data = {"action": "signin"};
+		var data = {"action": "signup"};
 
 		if($('#name').val().trim() != "")
 			data['name'] = $('#name').val().trim();

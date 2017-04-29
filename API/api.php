@@ -18,7 +18,7 @@ switch ($action) {
 		}
 	break;
 	
-	case 'signin':
+	case 'signup':
 		if(isset($_POST['email']) && isset($_POST['username']) && isset($_POST['password'])){
 			
 			if(isset($_POST['name'])){
