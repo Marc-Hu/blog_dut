@@ -27,7 +27,7 @@ switch ($action) {
 				$name = "";
 			}
 
-			signin($name, $_POST['email'], $_POST['username'], $_POST['password']);
+			signup($name, $_POST['email'], $_POST['username'], $_POST['password']);
 		}
 	break;
 

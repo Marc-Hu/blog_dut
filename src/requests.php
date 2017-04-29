@@ -91,11 +91,11 @@ function is_valid_username($username){
     }
 }
 
-function signin($name, $username, $email, $password){
+function signup($name, $username, $email, $password){
     if(trim($name) != ""){
-        $request = "SELECT * FROM signin(:name, :username, :email, :password)";
+        $request = "SELECT * FROM signup(:name, :username, :email, :password)";
     }else{
-        $request = "SELECT * FROM signin_no_name(:username, :email, :password)";
+        $request = "SELECT * FROM signup_no_name(:username, :email, :password)";
     }
 
     // On prépare la requête

@@ -25,10 +25,9 @@ CREATE OR REPLACE VIEW count_valid_subjects
 				WHERE suj_hide=False;
 
 -- 
-CREATE OR REPLACE VIEW get_members
-	(username, name, mail, password)																																																																																																																																																																														
+CREATE OR REPLACE VIEW get_members																																																																																																																																																																														
 	AS
-		SELECT *
+		SELECT username, name, email, password
 			FROM members;
 
 
@@ -40,7 +39,7 @@ CREATE or replace RULE member_insert_1 as
   DO instead 
     (
 		INSERT INTO members(username, name, email, password) values
-		(NEW.username, NEW.name, NEW.mail, NEW.password);
+		(NEW.username, NEW.name, NEW.email, NEW.password);
     );
 
 -- sans les noms de l'utilisateur
@@ -49,5 +48,5 @@ CREATE or replace RULE member_insert_2 as
   DO instead 
     (
 		INSERT INTO members(username, email, password) values
-		(NEW.username, NEW.mail, NEW.password);
+		(NEW.username, NEW.email, NEW.password);
     );

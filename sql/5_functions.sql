@@ -30,8 +30,8 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- create user
-CREATE OR REPLACE FUNCTION signin(signin_username varchar, signin_name varchar, signin_email varchar, signin_password varchar)
+CREATE OR REPLACE FUNCTION signup(signup_username varchar, signup_name varchar, signup_email varchar, signup_password varchar)
 RETURNS void AS
 $$
-  INSERT INTO get_members(username, name, email, password) VALUES (signin_username, signin_name, signin_email, signin_password);
+  INSERT INTO get_members(username, name, email, password) VALUES (signup_username, signup_name, signup_email, signup_password);
 $$ LANGUAGE sql;
