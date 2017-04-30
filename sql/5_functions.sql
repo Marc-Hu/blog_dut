@@ -53,7 +53,7 @@ $$
   INSERT INTO get_members(username, name, email, password) VALUES (signup_username, signup_name, signup_email, signup_password);
 $$ LANGUAGE sql;
 
---check if username and password are correct, return true or false
+--check if username and password are correct when signup, return true or false
 CREATE OR REPLACE FUNCTION verifUtilisateur(in nom_utilisateur varchar, in mdp varchar)
 RETURNS boolean AS
 $$
@@ -136,7 +136,7 @@ CREATE OR REPLACE FUNCTION messages_fils(in pere integer)
 RETURNS TABLE (id integer, auteur integer, contenu text, creation timestamp) AS
 $$
   SELECT msg_id, msg_author, msg_body, created_at 
-      FROM messages
+      FROM get_messages
         WHERE msg_parent=pere
           ORDER BY msg_id ASC;
 $$ language SQL;
