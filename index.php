@@ -8,6 +8,10 @@ $connected = true;
 
 if(!isset($_SESSION['connected'])){
 	$connected = false;
+}else{
+	$menu = "
+		<li><a href='/index.php?page=profil'>Profile</a></li>
+	";
 }
 debug($_SESSION);
 

@@ -20,7 +20,7 @@ INSERT INTO sujet(suj_name, suj_hide, suj_tag)  values
 INSERT INTO members(username, name, email, password, personal_desc) values
 ('bigfan', 'tony', 'tony@merde.com', 'testtest', 'Et merde !'),
 ('geron', 'marc', 'marc@merde.com', 'testtest', 'Et les merdeux !'),
-('skyro', 'steeve', 'tony@merde.com', 'testtest', 'C est merdoyant !'),
+('skyro', 'steeve', 'steeve@merde.com', 'testtest', 'C est merdoyant !'),
 ('fragile', 'bastien', 'bastien@merde.com', 'testtest', '#JeSuisFragile');
 
 INSERT INTO messages(msg_parent, msg_author, msg_subject, msg_body) values

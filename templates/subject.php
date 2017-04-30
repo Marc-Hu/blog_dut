@@ -60,6 +60,7 @@ if($messages != false && $sujets != false){
 	$affichage_mess .= "<p class='not-found'>Il n'y a pas de message<p>";
 }
 ?>
+
 <div class="box">
 	<div id='sujet'>
 		<?php echo $affichage_suj; ?>

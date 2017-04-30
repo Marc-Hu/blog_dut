@@ -131,7 +131,7 @@ function signin($username, $password){
     // éxécution
     if($stmt->execute()){
         $row = $stmt->fetch(\PDO::FETCH_OBJ);   
-        return $row->verifutilisateur;
+        return $row;
     }else{
         throw new exception(__FUNCTION__.' Erreur SQL : '.$req);
     }

@@ -12,10 +12,11 @@ if(isset($_POST)){
 	}
 
 	if($counter==2){
-		if(signin($username, $password) == True){
+		$signature = signin($username, $password);
+		if($signature->verif == True){
 			$_SESSION['connected'] = true;
 			$_SESSION['username'] = $_POST['username_login'];
-			//session_destroy();
+			$_SESSION['id_user'] = $signature->id;
 		}else{
 			$counter = 0;
 		}
