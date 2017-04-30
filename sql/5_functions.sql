@@ -118,7 +118,7 @@ CREATE OR REPLACE FUNCTION messages_fils(in pere integer)
 RETURNS TABLE (id integer, auteur integer, contenu text, creation timestamp) AS
 $$
   SELECT msg_id, msg_author, msg_body, created_at 
-      FROM messages
+      FROM get_messages
         WHERE msg_parent=pere
           ORDER BY msg_id ASC;
 $$ language SQL;
@@ -141,3 +141,6 @@ $$
       WHERE suj_tag=tag AND suj_hide=false
         ORDER BY suj_id ASC;
 $$ language SQL;
+
+CREATE OR REPLACE FUNCTION controle_inscription
+RETURNS TRIGGER AS

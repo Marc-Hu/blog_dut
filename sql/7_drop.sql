@@ -17,9 +17,9 @@ drop function if exists sujet_tag(integer);
 drop RULE if exists member_insert_1 on get_members;
 drop RULE if exists member_insert_2 on get_members;
 drop RULE if exists member_insert_3 on get_members;
-drop RULE if exists message_insert1 on get_message;
-drop RULE if exists message_insert2 on get_message;
-drop RULE if exists message_insert3 on get_message;
+drop RULE if exists message_insert1 on get_messages;
+drop RULE if exists message_insert2 on get_messages;
+drop RULE if exists message_insert3 on get_messages;
 
 -- drop view
 drop view if exists get_sujets;
