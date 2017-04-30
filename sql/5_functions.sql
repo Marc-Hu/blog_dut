@@ -53,7 +53,7 @@ $$
   INSERT INTO get_members(username, name, email, password) VALUES (signup_username, signup_name, signup_email, signup_password);
 $$ LANGUAGE sql;
 
---check if username and password are correct, return true or false
+--check if username and password are correct when signup, return true or false
 CREATE OR REPLACE FUNCTION verifUtilisateur(in nom_utilisateur varchar, in mdp varchar)
 RETURNS boolean AS
 $$
@@ -161,6 +161,3 @@ $$
       WHERE suj_tag=tag AND suj_hide=false
         ORDER BY suj_id ASC;
 $$ language SQL;
-
-CREATE OR REPLACE FUNCTION controle_inscription
-RETURNS TRIGGER AS
