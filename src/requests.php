@@ -174,7 +174,7 @@ function get_messages_child($id){
     $request = "SELECT * FROM messages_fils(:id)";
     $pdo = SPDO::getBD();
     $stmt = $pdo->prepare($request);
-    $stmt->bindValue(':id', $id_sujet);
+    $stmt->bindValue(':id', $id);
 
     // éxécution
     if($stmt->execute()){
