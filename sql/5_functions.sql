@@ -29,6 +29,23 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+-- Get sujet by id
+CREATE OR REPLACE FUNCTION get_subject_by_id(in id integer)
+RETURNS TABLE (nom varchar, crea timestamp, modif timestamp, tag integer) AS
+$$
+  SELECT suj_name, suj_created_at, suj_updated_at, suj_tag 
+    FROM get_sujets
+      WHERE suj_id=$1;
+$$ language SQL;
+
+CREATE OR REPLACE FUNCTION get_member_by_id(in id int)
+RETURNS TABLE (id integer, username varchar, name varchar, email varchar, desc_uti text) AS
+$$
+  SELECT mem_id, username, name, email, desc_uti
+    FROM get_members
+      WHERE mem_id=$1;
+$$ LANGUAGE sql;
+
 -- create user
 CREATE OR REPLACE FUNCTION signup(signup_username varchar, signup_name varchar, signup_email varchar, signup_password varchar)
 RETURNS void AS
@@ -37,7 +54,6 @@ $$
 $$ LANGUAGE sql;
 
 --check if username and password are correct, return true or false
-
 CREATE OR REPLACE FUNCTION verifUtilisateur(in nom_utilisateur varchar, in mdp varchar)
 RETURNS boolean AS
 $$
@@ -57,12 +73,14 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+
 --Modif desc profil
 create or replace function modifDesc(in nom_utilisateur varchar, in new_desc text)
 RETURNS void AS
 $$
   UPDATE get_members SET desc_uti=new_desc where username=nom_utilisateur;
 $$ language sql;
+
 
 --modif name
 create or replace function modifName(in nom_utilisateur varchar, in new_name varchar)
@@ -126,10 +144,12 @@ $$ language SQL;
 CREATE OR REPLACE FUNCTION messages_sujet(in sujet integer)
 RETURNS TABLE (id integer, auteur integer, contenu text, creation timestamp) AS
 $$
-  SELECT msg_id, msg_author, msg_body, created_at 
-      FROM get_messages
-        WHERE msg_subject=sujet AND msg_parent=null
-          ORDER BY msg_id ASC;
+
+SELECT msg_id, msg_author, msg_body, created_at 
+    FROM get_messages
+      WHERE msg_subject=sujet AND msg_parent is null
+        ORDER BY msg_id ASC;
+
 $$ language SQL;
 
 --renvoie un tableau qui contient tous les sujets d'un tag entré en paramètre

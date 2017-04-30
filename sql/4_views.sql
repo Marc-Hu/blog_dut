@@ -27,7 +27,7 @@ CREATE OR REPLACE VIEW count_valid_subjects
 -- 
 CREATE OR REPLACE VIEW get_members																																																																																																																																																																														
 	AS
-		SELECT username, name, email, password, personal_desc as desc_uti
+		SELECT mem_id, username, name, email, password, personal_desc as desc_uti
 			FROM members;
 
 

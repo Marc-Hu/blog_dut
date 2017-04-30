@@ -31,7 +31,7 @@ if($sujets != false && $pag->pagination == 0)
           	if($sujets != false){
 	          	foreach ($sujets as $sujet) {
 	          		$date = new DateTime($sujet->created_at);
-	          		echo "<a href='sujet.php?id='$sujet->id'>
+	          		echo "<a href='index.php?page=subject&id=$sujet->id'>
 						<p class='sujet'>
 						$sujet->name
 						<span class='pull-right'>

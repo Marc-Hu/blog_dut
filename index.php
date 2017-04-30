@@ -1,7 +1,15 @@
 <?php
-
+session_start();
 require_once __DIR__.'/src/functions.php';
 require_once __DIR__.'/src/requests.php';
+
+$menu = "";
+$connected = true;
+
+if(!isset($_SESSION['connected'])){
+	$connected = false;
+}
+debug($_SESSION);
 
 include_once __DIR__.'/templates/header.php';
 
@@ -17,6 +25,12 @@ switch ($page) {
 		break;
 	case 'signin':
 		include_once __DIR__.'/templates/login.php';
+		break;
+	case 'logout':
+		include_once __DIR__.'/templates/logout.php';
+		break;
+	case 'subject':
+		include_once __DIR__.'/templates/subject.php';
 		break;
 	default:
 		include_once __DIR__.'/templates/home.php';

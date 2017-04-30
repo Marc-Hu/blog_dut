@@ -12,19 +12,33 @@ if(isset($_POST)){
 	}
 
 	if($counter==2){
-		if(signup($username, $password)){
-			$_SESSION
+		if(signin($username, $password) == True){
+			$_SESSION['connected'] = true;
+			$_SESSION['username'] = $_POST['username_login'];
+			//session_destroy();
+		}else{
+			$counter = 0;
 		}
+	}else{
+		$counter = 0;
 	}
+}
+
+if(isset($_SESSION['connected'])){
+	goPage('/');
 }
 
 ?>
 
 <div class="box">
-	<form class="form" method="post" action="/login.php">
+	<form class="form" method="post" action="/index.php?page=signin">
 		<div class="for-group">
 			<label for="username_login">pseudo : </label>
-			<input type="text" id="username_login" name="username_login">
+			<input type="text" id="username_login" name="username_login" value="<?php
+				if(isset($username)){
+					echo $username;
+				}
+			?>">
 		</div>
 		<div class="for-group">
 			<label for="password_login">Mot de passe : </label>

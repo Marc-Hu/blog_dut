@@ -81,7 +81,7 @@ function is_valid_username($username){
 
     // éxécution
     if($stmt->execute()){
-        $nbRow = $stmt->fetchAll(\PDO::FETCH_OBJ)[0];
+        $nbRow = $stmt->fetch(\PDO::FETCH_OBJ);
         if($nbRow->nb == 0)
             return true;
         else
@@ -109,9 +109,80 @@ function signup($name, $username, $email, $password){
     $stmt->bindValue(':password', $password);
 
     // éxécution
-    if($stmt->execute()){
-        $nbRow = $stmt->fetchAll(\PDO::FETCH_OBJ)[0];   
+    if($stmt->execute()){   
         return true;
+    }else{
+        throw new exception(__FUNCTION__.' Erreur SQL : '.$req);
+    }
+}
+
+
+function signin($username, $password){
+    
+    $request = "SELECT * FROM verifUtilisateur(:username, :password)";
+    
+
+    // On prépare la requête
+    $pdo = SPDO::getBD();
+    $stmt = $pdo->prepare($request);
+    $stmt->bindValue(':username', $username);
+    $stmt->bindValue(':password', $password);
+
+    // éxécution
+    if($stmt->execute()){
+        $row = $stmt->fetch(\PDO::FETCH_OBJ);   
+        return $row->verifutilisateur;
+    }else{
+        throw new exception(__FUNCTION__.' Erreur SQL : '.$req);
+    }
+}
+
+function get_subject($id){
+    $request = "SELECT * FROM get_subject_by_id(:id)";
+    $pdo = SPDO::getBD();
+    $stmt = $pdo->prepare($request);
+    $stmt->bindValue(':id', $id);
+
+    // éxécution
+    if($stmt->execute()){
+        return $stmt->fetch(\PDO::FETCH_OBJ);
+    }else{
+        throw new exception(__FUNCTION__.' Erreur SQL : '.$req);
+    }
+}
+
+function get_messages($id_sujet){
+    $request = "SELECT * FROM messages_sujet(:id)";
+    $pdo = SPDO::getBD();
+    $stmt = $pdo->prepare($request);
+    $stmt->bindValue(':id', $id_sujet);
+
+    // éxécution
+    if($stmt->execute()){
+        $row = $stmt->fetchAll(\PDO::FETCH_OBJ);
+        if(sizeof($row) > 0){
+            return $row;
+        }else{
+            return false;
+        }
+    }else{
+        throw new exception(__FUNCTION__.' Erreur SQL : '.$req);
+    }
+}
+
+function get_message_child($id){
+
+}
+
+function get_member($id){
+    $request = "SELECT * FROM get_member_by_id(:id)";
+    $pdo = SPDO::getBD();
+    $stmt = $pdo->prepare($request);
+    $stmt->bindValue(':id', $id);
+
+    // éxécution
+    if($stmt->execute()){
+        return $stmt->fetch(\PDO::FETCH_OBJ);
     }else{
         throw new exception(__FUNCTION__.' Erreur SQL : '.$req);
     }
