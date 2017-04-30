@@ -149,7 +149,6 @@ SELECT msg_id, msg_author, msg_body, created_at
     FROM get_messages
       WHERE msg_subject=sujet AND msg_parent is null
         ORDER BY msg_id ASC;
-
 $$ language SQL;
 
 --renvoie un tableau qui contient tous les sujets d'un tag entré en paramètre

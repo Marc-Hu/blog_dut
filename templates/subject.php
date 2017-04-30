@@ -42,6 +42,7 @@ if($messages != false){
 		// sous-message
 		if(isset($message->id)){
 			$sousMessages = get_messages_child($message->id);
+			debug($sousMessages);
 		}
 	}
 }else{
