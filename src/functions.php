@@ -60,3 +60,10 @@ function get_config_db(){
 	$conf = file_get_contents(__DIR__.'/../config.json');
 	return json_decode($conf)->db;
 }
+
+/**
+ * Permet de ce rediriger vers un autre page
+ */
+function goPage($direction){
+    header("Location:$direction");
+}

@@ -1,3 +1,9 @@
+<?php
+if(isset($_SESSION['connected'])){
+	goPage('/');
+}
+?>
+
 <div class="box">
 	<div class="form-group">
 		<label for="username">Pseudo * : </label>

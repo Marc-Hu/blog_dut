@@ -1,5 +1,6 @@
 -- drop function
 DROP FUNCTION if exists get_sujet_by_part(int);
+drop function if exists get_subject_by_id(int);
 drop function if exists signin(varchar,varchar,varchar,varchar);
 drop function if exists verifUtilisateurs(varchar, varchar);
 drop function if exists modifName(varchar, varchar);

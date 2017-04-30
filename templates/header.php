@@ -31,10 +31,17 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <a href="/index.php?page=signin"><button class="btn btn-default">Sign in</button></a>
+        
         <?php
-          if($connected){
-            echo "<a href='/index.php?page=signup'><button class='btn btn-default'>Sign up</button></a>";
+          if(!$connected){
+            echo "
+              <li><a href='/index.php?page=signin'>Se connecter</a></li>
+              <li><a href='/index.php?page=signup'>S'enregistrer</a></li>
+              ";
+          }else{
+            echo "<li><a href='#'>".$_SESSION['username']."</a></li>
+              <li><a href='/index.php?page=logout'>Déconnecter</a></li>
+            ";
           }
         ?>
       </ul>
