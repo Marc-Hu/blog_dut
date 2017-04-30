@@ -32,6 +32,9 @@ switch ($page) {
 	case 'subject':
 		include_once __DIR__.'/templates/subject.php';
 		break;
+	case 'profil':
+		include_once __DIR__.'/templates/profile.php';
+		break;
 	default:
 		include_once __DIR__.'/templates/home.php';
 		break;

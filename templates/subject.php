@@ -3,7 +3,6 @@ if(isset($_GET['id'])){
 	$id = $_GET['id'];
 	$sujets = get_subject($_GET['id']);
 	$messages = get_messages($id);
-	debug($messages);
 }
 
 /** affichage sujet */
@@ -28,8 +27,9 @@ if($sujets != false){
 
 /** affichage messages */
 $affichage_mess = "";
-if($messages != false){
+if($messages != false && $sujets != false){
 	foreach ($messages as $message) {
+		$affichage_mess .= "<div class='mess'>";
 		if(isset($message->auteur)){
 			$auteur = get_member($message->auteur);
 			if(isset($auteur)){
@@ -42,8 +42,19 @@ if($messages != false){
 		// sous-message
 		if(isset($message->id)){
 			$sousMessages = get_messages_child($message->id);
-			debug($sousMessages);
+			foreach ($sousMessages as $sousMessage) {
+				$affichage_mess .= "<div class='sub-mess'>";
+				$auteur = get_member($sousMessage->auteur);
+				if(isset($auteur)){
+					$affichage_mess .= "<p class='author-mess'>$auteur->username<p>";
+				}
+				if(isset($sousMessage->contenu)){
+					$affichage_mess .= "<p class='body_mess'>$sousMessage->contenu</p>";
+				}
+				$affichage_mess .= "</div>";
+			}
 		}
+		$affichage_mess .= "</div>";
 	}
 }else{
 	$affichage_mess .= "<p class='not-found'>Il n'y a pas de message<p>";
