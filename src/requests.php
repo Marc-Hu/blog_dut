@@ -170,8 +170,23 @@ function get_messages($id_sujet){
     }
 }
 
-function get_message_child($id){
+function get_messages_child($id){
+    $request = "SELECT * FROM messages_fils(:id)";
+    $pdo = SPDO::getBD();
+    $stmt = $pdo->prepare($request);
+    $stmt->bindValue(':id', $id_sujet);
 
+    // éxécution
+    if($stmt->execute()){
+        $row = $stmt->fetchAll(\PDO::FETCH_OBJ);
+        if(sizeof($row) > 0){
+            return $row;
+        }else{
+            return false;
+        }
+    }else{
+        throw new exception(__FUNCTION__.' Erreur SQL : '.$req);
+    }
 }
 
 function get_member($id){
