@@ -54,21 +54,25 @@ $$
 $$ LANGUAGE sql;
 
 --check if username and password are correct when signup, return true or false
-CREATE OR REPLACE FUNCTION verifUtilisateur(in nom_utilisateur varchar, in mdp varchar)
-RETURNS boolean AS
+CREATE OR REPLACE FUNCTION verifUtilisateur(in nom_utilisateur varchar, in mdp varchar, out id integer, out verif boolean)
+RETURNS SETOF RECORD AS
 $$
 DECLARE
   nom varchar := null;
   motdepasse varchar := null;
   curseur CURSOR FOR
-    SELECT username, password from get_members where username=nom_utilisateur;
+    SELECT mem_id, username, password from get_members where username=nom_utilisateur;
 BEGIN
+  id:=(-1);
+  verif:=false;
   open curseur;
-  FETCH curseur into nom, motdepasse;
+  FETCH curseur into id, nom, motdepasse;
   if nom = nom_utilisateur and motdepasse=mdp then
-    return true;
+    verif:=true;
+    return next;
+  else
+    return next;
   end if;
-  return false;
   close curseur;
 END;
 $$ LANGUAGE plpgsql;
@@ -78,7 +82,7 @@ $$ LANGUAGE plpgsql;
 create or replace function modifDesc(in nom_utilisateur varchar, in new_desc text)
 RETURNS void AS
 $$
-  UPDATE get_members SET desc_uti=new_desc where username=nom_utilisateur;
+  UPDATE get_members SET desc_uti=new_desc, username=nom_utilisateur where username=nom_utilisateur;
 $$ language sql;
 
 
@@ -86,21 +90,21 @@ $$ language sql;
 create or replace function modifName(in nom_utilisateur varchar, in new_name varchar)
 RETURNS void AS
 $$
-  UPDATE get_members SET name=new_name where username=nom_utilisateur;
+  UPDATE get_members SET name=new_name, username=nom_utilisateur where username=nom_utilisateur;
 $$ language sql;
 
 --modif password
 create or replace function modifPassword(in nom_utilisateur varchar, in new_password varchar)
 RETURNS void AS
 $$
-  UPDATE get_members SET password=new_password where username=nom_utilisateur;
+  UPDATE get_members SET password=new_password, username=nom_utilisateur where username=nom_utilisateur;
 $$ language sql;
 
 --modif email
 create or replace function modifEmail(in nom_utilisateur varchar, in new_email varchar)
 RETURNS void AS
 $$
-  UPDATE get_members SET email=new_email where username=nom_utilisateur;
+  UPDATE get_members SET email=new_email, username=nom_utilisateur where username=nom_utilisateur;
 $$ language sql;
 
 --ajout d'un post avec un tag

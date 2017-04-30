@@ -35,7 +35,7 @@ CREATE OR REPLACE VIEW get_members
 
 -- avec le nom de l'utilisateur
 CREATE or replace RULE member_insert_1 as 
-    on INSERT to get_members where NEW.name<>''
+    on INSERT to get_members where NEW.name<>'' AND meme_username_dans_bdd(NEW.username)=false AND meme_email_dans_bdd(NEW.email)=false
   DO instead
     (
 		INSERT INTO members(username, name, email, password) values
@@ -45,7 +45,7 @@ CREATE or replace RULE member_insert_1 as
 
 -- sans les noms de l'utilisateur
 CREATE or replace RULE member_insert_2 as 
-    on INSERT to get_members where NEW.name=''
+    on INSERT to get_members where NEW.name='' AND meme_username_dans_bdd(NEW.username)=false AND meme_email_dans_bdd(NEW.email)=false
   DO instead 
     (
 		INSERT INTO members(username, email, password) values
@@ -57,6 +57,38 @@ create or replace RULE member_insert_3 as
   		do instead
     		Nothing;
 
+create or replace RULE member_update_1 as
+	on UPDATE to get_members where NEW.name<>''
+	DO instead
+		(
+			UPDATE members set name=NEW.name where username=NEW.username
+		);
+
+create or replace RULE member_update_2 as
+	on UPDATE to get_members where NEW.desc_uti<>''
+	DO instead
+		(
+			UPDATE members set personal_desc=NEW.desc_uti where username=NEW.username
+		);
+
+create or replace RULE member_update_3 as
+	on UPDATE to get_members where NEW.password<>''
+	DO instead
+		(
+			UPDATE members set password=NEW.password where username=NEW.username
+		);
+
+create or replace RULE member_update_4 as
+	on UPDATE to get_members where NEW.email<>'' AND meme_email_dans_bdd(NEW.email)=false
+	DO instead
+		(
+			UPDATE members set email=NEW.email where username=NEW.username
+		);
+
+create or replace RULE member_update_5 as
+	on UPDATE to get_members
+	DO instead
+		NOTHING;
 
 CREATE OR REPLACE RULE message_insert1 as
 	on INSERT to get_messages WHERE msg_parent<>null
