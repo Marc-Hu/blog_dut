@@ -2,7 +2,7 @@
 DROP FUNCTION if exists get_sujet_by_part(int);
 drop function if exists get_subject_by_id(int);
 drop function if exists get_member_by_id(int);
-drop function if exists is_valid_username(varchars);
+drop function if exists is_valid_username(varchar);
 drop function if exists signup(varchar,varchar,varchar,varchar);
 drop function if exists verifUtilisateur(varchar, varchar);
 drop function if exists modifName(varchar, varchar);
@@ -16,7 +16,8 @@ drop function if exists ajoutMessage(integer, integer, integer, text);
 drop function if exists messages_fils(integer);
 drop function if exists messages_sujet(integer);
 drop function if exists sujet_tag(integer);
-drop function if exists meme_username_dans_bdd(varchar, varchar);
+drop function if exists meme_username_dans_bdd(varchar);
+drop function if exists meme_email_dans_bdd(varchar);
 
 -- RULE
 drop RULE if exists member_insert_1 on get_members;
