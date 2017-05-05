@@ -1,3 +1,5 @@
+
+
 -- Table tag
 create table tag(
     tag_id serial primary key,

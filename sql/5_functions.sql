@@ -27,7 +27,8 @@ BEGIN
     FROM get_members as m
       WHERE m.username=$1;
 END;
-$$ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql
+security definer;
 
 -- Get sujet by id
 CREATE OR REPLACE FUNCTION get_subject_by_id(in id integer)
@@ -44,7 +45,8 @@ $$
   SELECT mem_id, username, name, email, desc_uti
     FROM get_members
       WHERE mem_id=$1;
-$$ LANGUAGE sql;
+$$ LANGUAGE sql
+security definer;
 
 -- create user
 CREATE OR REPLACE FUNCTION signup(signup_username varchar, signup_name varchar, signup_email varchar, signup_password varchar)
@@ -58,8 +60,8 @@ CREATE OR REPLACE FUNCTION verifUtilisateur(in nom_utilisateur varchar, in mdp v
 RETURNS SETOF RECORD AS
 $$
 DECLARE
-  nom varchar := null;
-  motdepasse varchar := null;
+  nom varchar;
+  motdepasse varchar ;
   curseur CURSOR FOR
     SELECT mem_id, username, password from get_members where username=nom_utilisateur;
 BEGIN
@@ -75,7 +77,8 @@ BEGIN
   end if;
   close curseur;
 END;
-$$ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql
+security definer;
 
 
 --Modif desc profil
@@ -83,7 +86,8 @@ create or replace function modifDesc(in nom_utilisateur varchar, in new_desc tex
 RETURNS void AS
 $$
   UPDATE get_members SET desc_uti=new_desc, username=nom_utilisateur where username=nom_utilisateur;
-$$ language sql;
+$$ language sql
+security definer;
 
 
 --modif name
@@ -91,21 +95,24 @@ create or replace function modifName(in nom_utilisateur varchar, in new_name var
 RETURNS void AS
 $$
   UPDATE get_members SET name=new_name, username=nom_utilisateur where username=nom_utilisateur;
-$$ language sql;
+$$ language sql
+security definer;
 
 --modif password
 create or replace function modifPassword(in nom_utilisateur varchar, in new_password varchar)
 RETURNS void AS
 $$
   UPDATE get_members SET password=new_password, username=nom_utilisateur where username=nom_utilisateur;
-$$ language sql;
+$$ language sql
+security definer;
 
 --modif email
 create or replace function modifEmail(in nom_utilisateur varchar, in new_email varchar)
 RETURNS void AS
 $$
   UPDATE get_members SET email=new_email, username=nom_utilisateur where username=nom_utilisateur;
-$$ language sql;
+$$ language sql
+security definer;
 
 --ajout d'un post avec un tag
 create or replace function ajoutPostAvecTag(in titre varchar, in tagNum integer)
@@ -157,9 +164,9 @@ $$ language SQL;
 
 --renvoie un tableau qui contient tous les sujets d'un tag entré en paramètre
 CREATE OR REPLACE FUNCTION sujet_tag(in tag integer)
-RETURNS TABLE (nom varchar, crea timestamp, modif timestamp, tag integer) AS
+RETURNS TABLE (id integer, nom varchar, crea timestamp, modif timestamp, tag integer) AS
 $$
-  SELECT suj_name, suj_created_at, suj_updated_at, suj_tag 
+  SELECT suj_id, suj_name, suj_created_at, suj_updated_at, suj_tag 
     FROM get_sujets
       WHERE suj_tag=tag AND suj_hide=false
         ORDER BY suj_id ASC;
