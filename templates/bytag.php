@@ -1,26 +1,33 @@
 <?php
 
-if(isset($_GET['idx']))
-	$index = $_GET['idx'];
-else
-	$index = 0;
+if(isset($_GET["id"])) {
+	debug(get_subjectByTagId($_GET["id"]));
+	$sujets = get_subjectByTagId($_GET['id']);
 
-$nbSubject = nbSujetValid();
 
-$pag = pagination($index, $nbSubject);
-
-// on récupère les sujet avec la position du curseur
-$sujets = allSubjects($pag->pos);
-
-// on récupère tous les tags qu'il faut
-$tags = allTags();
-
-// gestion du cas ou la pagination vaut 0
-if($sujets != false && $pag->pagination == 0)
-    $pag->pagination = 1;
-
+}
 ?>
 
 <div class="box">
-		
+		<?php if (isset($sujets)) {
+			$result = "";
+			foreach($sujets as $array) {
+				$crea = new DateTime($array->crea);
+				$result .= "<a href='index.php?page=subject&id=$array->id'><p>".$crea->format('d/m/Y - H:i:s')."</p>";
+				if($array->crea != $array->modif) {
+					$modif = new DateTime($array->modif);
+					$result .= "<p>".$modif->format('d/m/Y - H:i:s')."</p>";	
+				}
+				$result .= "<p align='center'>$array->nom</p></a>";
+			}
+
+		} else {
+			$result .= "Aucun sujet trouvés";
+		}
+		?>
+		<a href="">
+		<?php echo $result; ?>
+		</a>
+
+		?>
 </div>

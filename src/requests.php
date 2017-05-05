@@ -202,3 +202,20 @@ function get_member($id){
         throw new exception(__FUNCTION__.' Erreur SQL : '.$req);
     }
 }
+
+function get_subjectByTagId($id){
+    $request = "SELECT * FROM sujet_tag(:id)";
+    $pdo = SPDO::getBD();
+    $stmt = $pdo->prepare($request);
+    $stmt->bindValue(':id', $id);
+    if($stmt->execute()){
+        $row = $stmt->fetchAll(\PDO::FETCH_OBJ);
+        if(sizeof($row) > 0){
+            return $row;
+        }else{
+            return false;
+        }
+    }else{
+        throw new exception(__FUNCTION__.' Erreur SQL : '.$req);
+    }
+}

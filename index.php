@@ -27,6 +27,9 @@ switch ($page) {
 	case 'signup':
 		include_once __DIR__.'/templates/inscription.php';
 		break;
+	case 'bytag':
+		include_once __DIR__.'/templates/bytag.php';
+		break;
 	case 'signin':
 		include_once __DIR__.'/templates/login.php';
 		break;
