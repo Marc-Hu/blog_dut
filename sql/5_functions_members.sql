@@ -16,7 +16,8 @@ BEGIN
 	CLOSE curseur;
 	return true;
 END;
-$$ language PLPGSQL;
+$$ language PLPGSQL
+security definer;
 
 CREATE OR REPLACE FUNCTION meme_email_dans_bdd(in nouveaumail varchar)
 RETURNS BOOLEAN AS
@@ -36,4 +37,5 @@ BEGIN
 	CLOSE curseur;
 	return true;
 END;
-$$ language PLPGSQL;
+$$ language PLPGSQL
+security definer;

@@ -25,7 +25,7 @@ CREATE OR REPLACE VIEW count_valid_subjects
 				WHERE suj_hide=False;
 
 -- 
-CREATE OR REPLACE VIEW get_members																																																																																																																																																																														
+CREATE OR REPLACE VIEW get_members																																																																																																																																																					
 	AS
 		SELECT mem_id, username, name, email, password, personal_desc as desc_uti
 			FROM members;
