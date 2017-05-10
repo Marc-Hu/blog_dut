@@ -3,6 +3,7 @@
 if(isset($_GET["id"])) {
 	debug(get_subjectByTagId($_GET["id"]));
 	$sujets = get_subjectByTagId($_GET['id']);
+	
 
 
 }
@@ -13,7 +14,7 @@ if(isset($_GET["id"])) {
 			$result = "";
 			foreach($sujets as $array) {
 				$crea = new DateTime($array->crea);
-				$result .= "<a href='index.php?page=subject&id=$array->id'><p>".$crea->format('d/m/Y - H:i:s')."</p>";
+				$result .= "<a href='index.php?page=subject&id=".$array->tag."'><p>".$crea->format('d/m/Y - H:i:s')."</p>";
 				if($array->crea != $array->modif) {
 					$modif = new DateTime($array->modif);
 					$result .= "<p>".$modif->format('d/m/Y - H:i:s')."</p>";	
@@ -24,10 +25,7 @@ if(isset($_GET["id"])) {
 		} else {
 			$result .= "Aucun sujet trouvés";
 		}
-		?>
-		<a href="">
-		<?php echo $result; ?>
-		</a>
+		echo $result;
 
 		?>
 </div>
