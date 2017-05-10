@@ -13,7 +13,6 @@ if(!isset($_SESSION['connected'])){
 		<li><a href='/index.php?page=profil'>Profile</a></li>
 	";
 }
-debug($_SESSION);
 
 include_once __DIR__.'/templates/header.php';
 

@@ -93,7 +93,7 @@ function is_valid_username($username){
 
 function signup($name, $username, $email, $password){
     if(trim($name) != ""){
-        $request = "SELECT * FROM signup(:name, :username, :email, :password)";
+        $request = "SELECT * FROM signup(:username, :name, :email, :password)";
     }else{
         $request = "SELECT * FROM signup_no_name(:username, :email, :password)";
     }

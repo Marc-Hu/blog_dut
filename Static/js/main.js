@@ -32,7 +32,7 @@ $(document).ready(function(){
 		
 		$.post(api, data)
 		.success(function(data){
-
+			console.log(data);
 		})
 		.fail(function(data){
 
