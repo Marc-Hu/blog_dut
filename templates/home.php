@@ -73,7 +73,7 @@ if($sujets != false && $pag->pagination == 0)
 					// affichage recherche par tag
 					foreach ($tags as $tag) {
 						echo "<li>
-						  <a href='bytag.php?page='bytags'&id=$tag->tag_id'>
+						  <a href='index.php?page=bytag&id=$tag->tag_id'>
 						    <span class='label label-default'>$tag->tag_id - $tag->name</span>
 						  </a>
 						</li>";

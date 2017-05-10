@@ -7,12 +7,34 @@ var api = "API/api.php"; // api
 
 
 $(document).ready(function(){
-	var location = window.location.pathname;
-	switch(location){
-		case "/inscription.php":
-		action_inscription();
-		break;
-	}
+	// var location = window.location.pathname;
+	// switch(location){
+	// 	case "/inscription.php":
+	// 	action_inscription();
+	// 	break;
+	// }
+
+	$('.add-message').on('mousedown', '.poster',function(e){
+		if(e.which==3)
+			return;
+		data = {
+			"action": "post_message",
+			"parent": null,
+			"subject": null,
+			"message": null,
+		};
+		data.parent = $(this).data('parent');
+		data.subject = $(this).data('subject');
+		data.message = $(this).parent().find('.new-message').val();
+		
+		$.post(api, data)
+		.success(function(data){
+
+		})
+		.fail(function(data){
+
+		});
+	});
 });
 
 

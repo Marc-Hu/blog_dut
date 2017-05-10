@@ -32,7 +32,11 @@ switch ($action) {
 			}
 		}
 	break;
-
+	case 'post_message':
+		if(isset($_POST['parent']) && isset($_POST['subject']) && isset($_POST['message'])){
+			echo "salut";
+		}
+	break;
 	default:
 		include_once __DIR__.'/../templates/header.html';
 		include_once __DIR__.'/../templates/footer.html';

@@ -31,9 +31,5 @@ class SPDO{
     return $this->PDOInstance->prepare($query);
   }
   
-  public function lastInsertId($name=''){
-    return $this->PDOInstance->lastInsertId($name);
-  }
-  
 }
 

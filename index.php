@@ -39,6 +39,9 @@ switch ($page) {
 	case 'profil':
 		include_once __DIR__.'/templates/profile.php';
 		break;
+	case 'bytag':
+		include_once __DIR__.'/templates/bytag.php';
+		break;
 	default:
 		include_once __DIR__.'/templates/home.php';
 		break;

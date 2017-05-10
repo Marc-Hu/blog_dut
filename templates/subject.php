@@ -29,7 +29,7 @@ if($sujets != false){
 $affichage_mess = "";
 if($messages != false && $sujets != false){
 	foreach ($messages as $message) {
-		$affichage_mess .= "<div class='mess'>";
+		$affichage_mess .= "<div class='mess box'>";
 		if(isset($message->auteur)){
 			$auteur = get_member($message->auteur);
 			if(isset($auteur)){
@@ -43,21 +43,41 @@ if($messages != false && $sujets != false){
 		if(isset($message->id)){
 			$sousMessages = get_messages_child($message->id);
 			foreach ($sousMessages as $sousMessage) {
-				$affichage_mess .= "<div class='sub-mess'>";
+				$affichage_mess .= "<div class='sub-mess box'>";
 				$auteur = get_member($sousMessage->auteur);
 				if(isset($auteur)){
 					$affichage_mess .= "<p class='author-mess'>$auteur->username<p>";
 				}
 				if(isset($sousMessage->contenu)){
 					$affichage_mess .= "<p class='body_mess'>$sousMessage->contenu</p>";
+					$affichage_mess .= "<div class='add-message'>
+						<div class='form-group'>
+							<textarea class='new-message'>
+							</textarea>
+						</div>
+						<button class='poster' data-subject=".$_GET['id']." data-parent=".$sousMessage->id.">Poster</button>
+					</div>";
 				}
 				$affichage_mess .= "</div>";
 			}
 		}
+		$affichage_mess .= "<div class='add-message'>
+			<div class='form-group'>
+				<textarea class='new-message'></textarea>
+			</div>
+			<button class='poster' data-subject=".$_GET['id']." data-parent=".$message->id.">Poster</button>
+		</div>";
 		$affichage_mess .= "</div>";
 	}
 }else{
 	$affichage_mess .= "<p class='not-found'>Il n'y a pas de message<p>";
+	$affichage_mess .= "<div class='add-message'>
+		<div class='form-group'>
+			<textarea class='new-message'>
+			</textarea>
+		</div>
+		<button class='poster' data-subject=".$_GET['id'].">Poster</button>
+	</div>";
 }
 ?>
 
