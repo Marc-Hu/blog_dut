@@ -60,6 +60,7 @@ RETURNS void AS
 $$
   INSERT INTO get_members(username, email, password) VALUES (signup_username, signup_email, signup_password);
 $$ LANGUAGE sql;
+
 --check if username and password are correct when signup, return true or false
 CREATE OR REPLACE FUNCTION verifUtilisateur(in nom_utilisateur varchar, in mdp varchar, out id integer, out verif boolean)
 RETURNS SETOF RECORD AS

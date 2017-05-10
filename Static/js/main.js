@@ -133,11 +133,10 @@ function action_inscription(){
 		if(bool_form_password && bool_form_username && bool_form_email){
 			$.post(api, data)
 			.done(function(data){
-				console.log(data);
 				data = JSON.parse(data);
-
+				
 				if(data.valid==true){
-					console.log('test');
+					document.location.href= "/index.php?page=signin";
 				}
 			})
 			.fail(function(e){
