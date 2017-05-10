@@ -32,7 +32,7 @@ $(document).ready(function(){
 		
 		$.post(api, data)
 		.success(function(data){
-			console.log(data);
+
 		})
 		.fail(function(data){
 
@@ -136,7 +136,16 @@ function action_inscription(){
 				data = JSON.parse(data);
 				
 				if(data.valid==true){
-					document.location.href= "/index.php?page=signin";
+					login_data = {
+						"username_login": $('#username').val(),
+						"password_login": $('#password').val()
+					}
+					$.post("/index.php?page=signin", login_data)
+					.success(function(){
+						document.location.href= "/index.php?page=signin";
+					}).fail(function(){
+						console.log('erreur');
+					});
 				}
 			})
 			.fail(function(e){
