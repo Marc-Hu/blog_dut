@@ -11,6 +11,8 @@ GRANT EXECUTE ON function is_valid_username(username varchar) to blog;
 GRANT EXECUTE ON function get_member_by_id(id int) to blog;
 GRANT EXECUTE ON function meme_username_dans_bdd(pseudo varchar) to blog;
 GRANT EXECUTE ON function meme_email_dans_bdd(nouveaumail varchar) to blog;
+GRANT EXECUTE ON function ajoutMessage(integer, integer, integer, text) to blog;
+GRANT EXECUTE ON function ajoutMessage_no_parent(integer, integer, text) to blog;
 
 GRANT INSERT ON get_members TO blog;
 

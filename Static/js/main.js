@@ -22,14 +22,13 @@ $(document).ready(function(){
 			return;
 		data = {
 			"action": "post_message",
-			"parent": null,
-			"subject": null,
-			"message": null,
+			"parent": $(this).data('parent'),
+			"subject": $(this).data('subject'),
+			"message": $(this).parent().find('.new-message').val(),
+			"author": $('#user_id').val()
 		};
-		data.parent = $(this).data('parent');
-		data.subject = $(this).data('subject');
-		data.message = $(this).parent().find('.new-message').val();
 		
+		console.log(data);
 		$.post(api, data)
 		.success(function(data){
 

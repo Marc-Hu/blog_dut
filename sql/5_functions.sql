@@ -139,7 +139,15 @@ create or replace function ajoutMessage(in parent integer, in auteur integer, in
 Returns void AS
 $$
   INSERT INTO get_messages(msg_parent, msg_author, msg_subject, msg_body) VALUES (parent, auteur, sujet, contenu);
-$$ language sql;
+$$ language sql
+security definer;
+
+create or replace function ajoutMessage_no_parent(in auteur integer, in sujet integer, in contenu text)
+Returns void AS
+$$
+  INSERT INTO get_messages(msg_author, msg_subject, msg_body) VALUES (auteur, sujet, contenu);
+$$ language sql
+security definer;
 
 --modifie le contenu d'un message
 create or replace function modifMessage(in idMess integer, in contenu text)

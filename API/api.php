@@ -33,8 +33,18 @@ switch ($action) {
 		}
 	break;
 	case 'post_message':
-		if(isset($_POST['parent']) && isset($_POST['subject']) && isset($_POST['message'])){
-			echo "salut";
+		if(isset($_POST['subject']) && isset($_POST['message']) && isset($_POST['author'])){
+			if(trim($_POST['message']) != ""){
+				if(isset($_POST['parent'])){
+					$result = set_message($_POST['subject'], $_POST['message'], $_POST['author'], $_POST['parent']);
+					echo json_encode(["valid"=>$result]);
+				}else{
+					$result = set_message($_POST['subject'], $_POST['message'], $_POST['author']);
+					echo json_encode(["valid"=>$result]);
+				}
+			}else{
+				echo json_encode(['msg_error'=>"Le message est vide.", "valid"=>false]);
+			}
 		}
 	break;
 	default:

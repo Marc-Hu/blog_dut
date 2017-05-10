@@ -61,23 +61,36 @@ if($messages != false && $sujets != false){
 				$affichage_mess .= "</div>";
 			}
 		}
+		if(isset($_SESSION['connected'])){
+			$affichage_mess .= "<div class='add-message'>
+				<div class='form-group'>
+					<textarea class='new-message'></textarea>
+				</div>
+				<button class='poster' data-subject=".$_GET['id']." data-parent=".$message->id.">Poster</button>
+			</div>";
+		}
+		$affichage_mess .= "</div>";
+	}
+	if(isset($_SESSION['connected'])){
 		$affichage_mess .= "<div class='add-message'>
 			<div class='form-group'>
-				<textarea class='new-message'></textarea>
+				<textarea class='new-message'>
+				</textarea>
 			</div>
-			<button class='poster' data-subject=".$_GET['id']." data-parent=".$message->id.">Poster</button>
+			<button class='poster' data-subject=".$_GET['id'].">Poster</button>
 		</div>";
-		$affichage_mess .= "</div>";
 	}
 }else{
 	$affichage_mess .= "<p class='not-found'>Il n'y a pas de message<p>";
-	$affichage_mess .= "<div class='add-message'>
-		<div class='form-group'>
-			<textarea class='new-message'>
-			</textarea>
-		</div>
-		<button class='poster' data-subject=".$_GET['id'].">Poster</button>
-	</div>";
+	if(isset($_SESSION['connected'])){
+		$affichage_mess .= "<div class='add-message'>
+			<div class='form-group'>
+				<textarea class='new-message'>
+				</textarea>
+			</div>
+			<button class='poster' data-subject=".$_GET['id'].">Poster</button>
+		</div>";
+	}
 }
 ?>
 
@@ -91,3 +104,6 @@ if($messages != false && $sujets != false){
 		<?php echo $affichage_mess; ?>
 	</div>
 </div>
+
+
+<input type="text" id="user_id" value="<?php if(isset($_SESSION['connected'])) echo $_SESSION['id_user']; ?>" hidden>

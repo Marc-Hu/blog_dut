@@ -219,3 +219,26 @@ function get_subjectByTagId($id){
         throw new exception(__FUNCTION__.' Erreur SQL : '.$req);
     }
 }
+
+function set_message($subject, $message, $author, $parent=""){
+    
+    if(!is_null($parent) && $parent != "NaN"){
+        $request = "SELECT * FROM ajoutMessage(:parent,:auteur,:sujet,:contenu)";
+        $pdo = SPDO::getBD();
+        $stmt = $pdo->prepare($request);
+        $stmt->bindValue(':parent', (int)$parent);
+    }else{
+        $request = "SELECT * FROM ajoutMessage_no_parent(:auteur,:sujet,:contenu)";
+        $pdo = SPDO::getBD();
+        $stmt = $pdo->prepare($request);
+    }
+    
+    $stmt->bindValue(':auteur', (int)$author);
+    $stmt->bindValue(':sujet', (int)$subject);
+    $stmt->bindValue(':contenu', $message);
+    if($stmt->execute()){
+        return true;
+    }else{
+        throw new exception(__FUNCTION__.' Erreur SQL : '.$req);
+    }
+}
