@@ -8,11 +8,14 @@ var api = "API/api.php"; // api
 
 $(document).ready(function(){
 	// var location = window.location.pathname;
-	// switch(location){
-	// 	case "/inscription.php":
-	// 	action_inscription();
-	// 	break;
-	// }
+	if (typeof page !== 'undefined') {
+		
+		switch(page){
+			case "inscription":
+			action_inscription();
+			break;
+		}
+	}
 
 	$('.add-message').on('mousedown', '.poster',function(e){
 		if(e.which==3)
@@ -40,6 +43,7 @@ $(document).ready(function(){
 
 // action inscription
 function action_inscription(){
+	console.log("banana");
 	// gestion du champ comfirmation mdp
 	function valid_password(){
 		var pass = $('#password').val();
@@ -129,6 +133,7 @@ function action_inscription(){
 		if(bool_form_password && bool_form_username && bool_form_email){
 			$.post(api, data)
 			.done(function(data){
+				console.log(data);
 				data = JSON.parse(data);
 
 				if(data.valid==true){

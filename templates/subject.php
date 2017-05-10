@@ -50,13 +50,13 @@ if($messages != false && $sujets != false){
 				}
 				if(isset($sousMessage->contenu)){
 					$affichage_mess .= "<p class='body_mess'>$sousMessage->contenu</p>";
-					$affichage_mess .= "<div class='add-message'>
-						<div class='form-group'>
-							<textarea class='new-message'>
-							</textarea>
-						</div>
-						<button class='poster' data-subject=".$_GET['id']." data-parent=".$sousMessage->id.">Poster</button>
-					</div>";
+					// $affichage_mess .= "<div class='add-message'>
+					// 	<div class='form-group'>
+					// 		<textarea class='new-message'>
+					// 		</textarea>
+					// 	</div>
+					// 	<button class='poster' data-subject=".$_GET['id']." data-parent=".$sousMessage->id.">Poster</button>
+					// </div>";
 				}
 				$affichage_mess .= "</div>";
 			}

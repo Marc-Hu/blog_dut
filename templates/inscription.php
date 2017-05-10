@@ -30,3 +30,7 @@ if(isset($_SESSION['connected'])){
 	</div>
 </div>
 
+<script>
+	var page = "inscription";
+</script>
+
