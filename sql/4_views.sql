@@ -46,7 +46,7 @@ CREATE or replace RULE member_insert_1 as
 
 -- sans les noms de l'utilisateur
 CREATE or replace RULE member_insert_2 as 
-    on INSERT to get_members where NEW.name is null --AND (meme_username_dans_bdd(NEW.username)=false OR meme_email_dans_bdd(NEW.email)=false)	AND (meme_username_dans_bdd(NEW.username)=false AND meme_email_dans_bdd(NEW.email)=false)
+    on INSERT to get_members where NEW.name is null AND (meme_username_dans_bdd(NEW.username)=false OR meme_email_dans_bdd(NEW.email)=false)	AND (meme_username_dans_bdd(NEW.username)=false AND meme_email_dans_bdd(NEW.email)=false)
   DO instead 
     (
 		INSERT INTO members(username, email, password) values
