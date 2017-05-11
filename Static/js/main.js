@@ -4,7 +4,7 @@ var bool_form_password = false;
 var bool_form_email = false;
 var bool_form_username = false;
 var api = "API/api.php"; // api
-
+String.prototype.trim=function(){return this.replace(/^\s+|\s+$/g, '');}
 
 $(document).ready(function(){
 	// var location = window.location.pathname;
@@ -17,10 +17,36 @@ $(document).ready(function(){
 		}
 	}
 
+	$('#ajoutS-btn').on('mousedown', function(e){
+		e.preventDefault();
+		if(e.which==3)
+			return;
+		
+		var nom = $('#ajoutS-name').val();
+		var tag = $('#ajoutS-tag').val();
+
+		var data = {
+			"action": "add_subject",
+			"nom": nom
+		};
+		if($.trim(tag) != '')
+			data['tag'] = tag;
+
+		$.post(api, data)
+		.success(function(data){
+			console.log(data);
+		}).fail(function(e){
+
+		});
+		
+
+
+	});
+
 	$('.add-message').on('mousedown', '.poster',function(e){
 		if(e.which==3)
 			return;
-		data = {
+		var data = {
 			"action": "post_message",
 			"parent": $(this).data('parent'),
 			"subject": $(this).data('subject'),
@@ -28,7 +54,6 @@ $(document).ready(function(){
 			"author": $('#user_id').val()
 		};
 		
-		console.log(data);
 		$.post(api, data)
 		.success(function(data){
 			location.reload();

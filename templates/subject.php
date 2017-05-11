@@ -55,7 +55,7 @@ if($sujets != false){
 			if(isset($_SESSION['connected'])){
 				$affichage_mess .= "<div class='add-message'>
 					<div class='form-group'>
-						<textarea class='new-message'></textarea>
+						<textarea class='new-message form-control' rows='3'></textarea>
 					</div>
 					<button class='poster' data-subject=".$_GET['id']." data-parent=".$message->id.">Poster</button>
 				</div>";
@@ -65,8 +65,7 @@ if($sujets != false){
 		if(isset($_SESSION['connected'])){
 			$affichage_mess .= "<div class='add-message'>
 				<div class='form-group'>
-					<textarea class='new-message'>
-					</textarea>
+					<textarea class='new-message form-control' rows='3'></textarea>
 				</div>
 				<button class='poster' data-subject=".$_GET['id'].">Poster</button>
 			</div>";
@@ -76,8 +75,7 @@ if($sujets != false){
 		if(isset($_SESSION['connected'])){
 			$affichage_mess .= "<div class='add-message'>
 				<div class='form-group'>
-					<textarea class='new-message'>
-					</textarea>
+					<textarea class='new-message form-control' rows='3'></textarea>
 				</div>
 				<button class='poster' data-subject=".$_GET['id'].">Poster</button>
 			</div>";

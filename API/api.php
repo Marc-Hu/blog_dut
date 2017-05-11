@@ -32,6 +32,7 @@ switch ($action) {
 			}
 		}
 	break;
+
 	case 'post_message':
 		if(isset($_POST['subject']) && isset($_POST['message']) && isset($_POST['author'])){
 			if(trim($_POST['message']) != ""){
@@ -48,8 +49,17 @@ switch ($action) {
 			}
 		}
 	break;
+
+	case 'add_subject':
+		if(isset($_POST['name']) && isset($_POST['tag'])){
+			echo json_encode(["valid"=>add_subject($_POST['name'],$_POST['tag'])]);
+		}else if(isset($_POST['name'])){
+			echo json_encode(["valid"=>add_subject($_POST['name'])]);
+		}
+		break;
+	
 	default:
-		include_once __DIR__.'/../templates/header.html';
-		include_once __DIR__.'/../templates/footer.html';
+		include_once __DIR__.'/../templates/header.php';
+		include_once __DIR__.'/../templates/footer.php';
 		break;
 }

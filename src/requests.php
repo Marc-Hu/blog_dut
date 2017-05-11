@@ -17,15 +17,7 @@ function nbSujetValid(){
     }
 }
 
-/**
- * Retourne tous les sujets du blog. 
- * La requête renvoie que 10 résultats trié par date de création.
- * 
- * TODO : Exception personnaliser pour les requêtes et/ou amélioration de la requête
- * 
- * @param int $min est la position ou commençera la limite
- * @return void si une erreur survient renvoie false, sinon renvoie un tableau associotiatif.
- */
+
 function allSubjects($min){
 	
     // Requête : afficher tous les sujets 
@@ -238,6 +230,32 @@ function set_message($subject, $message, $author, $parent=""){
     $stmt->bindValue(':contenu', $message);
     if($stmt->execute()){
         return true;
+    }else{
+        throw new exception(__FUNCTION__.' Erreur SQL : '.$req);
+    }
+}
+
+function add_subject($name, $tag=""){
+    if(trim($tag) != ""){
+        $request = "SELECT * FROM ajoutPostAvecTag(:name, :tag)";
+        $pdo = SPDO::getBD();
+        $stmt = $pdo->prepare($request);
+        $stmt->bindValue(':name', $name);
+        $stmt->bindValue(':tag', $tag);
+    }else{
+        $request = "SELECT * FROM ajoutPostSansTag(:name)";
+        $pdo = SPDO::getBD();
+        $stmt = $pdo->prepare($request);
+        $stmt->bindValue(':name', $name);
+    }
+    
+    if($stmt->execute()){
+        $row = $stmt->fetchAll(\PDO::FETCH_OBJ);
+        if(sizeof($row) > 0){
+            return $row;
+        }else{
+            return false;
+        }
     }else{
         throw new exception(__FUNCTION__.' Erreur SQL : '.$req);
     }
