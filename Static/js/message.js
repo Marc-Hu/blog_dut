@@ -29,9 +29,31 @@ $(document).ready(function() {
     });
 
     $('#modifierNom').on('click', function(e) {
+
         var data = {
             "username": $('#user_id').val(),
+            "nom": $(this).parent().find('input').val()
+        };
+    });
 
-        }
+    $('#modifierEmail').on('click', function(e) {
+        var data = {
+            "username": $('#user_id').val(),
+            "email": $(this).parent().find('input').val()
+        };
+    });
+
+    $('#modifierDesc').on('click', function(e) {
+        var data = {
+            "username": $('#user_id').val(),
+            "desc": $(this).parent().find('input').val()
+        };
+    });
+
+    $('#modifierMdp').on('click', function(e) {
+        var data = {
+            "username": $('#user_id').val(),
+            "mdp": $(this).parent().find('input').val()
+        };
     });
 });
