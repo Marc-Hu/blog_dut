@@ -42,23 +42,18 @@ if($messages != false && $sujets != false){
 		// sous-message
 		if(isset($message->id)){
 			$sousMessages = get_messages_child($message->id);
-			foreach ($sousMessages as $sousMessage) {
-				$affichage_mess .= "<div class='sub-mess box'>";
-				$auteur = get_member($sousMessage->auteur);
-				if(isset($auteur)){
-					$affichage_mess .= "<p class='author-mess'>$auteur->username<p>";
+			if($sousMessages != false){
+				foreach ($sousMessages as $sousMessage) {
+					$affichage_mess .= "<div class='sub-mess box'>";
+					$auteur = get_member($sousMessage->auteur);
+					if(isset($auteur)){
+						$affichage_mess .= "<p class='author-mess'>$auteur->username<p>";
+					}
+					if(isset($sousMessage->contenu)){
+						$affichage_mess .= "<p class='body_mess'>$sousMessage->contenu</p>";
+					}
+					$affichage_mess .= "</div>";
 				}
-				if(isset($sousMessage->contenu)){
-					$affichage_mess .= "<p class='body_mess'>$sousMessage->contenu</p>";
-					// $affichage_mess .= "<div class='add-message'>
-					// 	<div class='form-group'>
-					// 		<textarea class='new-message'>
-					// 		</textarea>
-					// 	</div>
-					// 	<button class='poster' data-subject=".$_GET['id']." data-parent=".$sousMessage->id.">Poster</button>
-					// </div>";
-				}
-				$affichage_mess .= "</div>";
 			}
 		}
 		if(isset($_SESSION['connected'])){

@@ -92,7 +92,7 @@ create or replace RULE member_update_5 as
 		NOTHING;
 
 CREATE OR REPLACE RULE message_insert1 as
-	on INSERT to get_messages WHERE msg_parent is null
+	on INSERT to get_messages WHERE NEW.msg_parent is not null
 		DO instead
 		(
 			INSERT INTO messages (msg_parent, msg_author, msg_subject, msg_body) values
@@ -100,7 +100,7 @@ CREATE OR REPLACE RULE message_insert1 as
 		);
 
 CREATE OR REPLACE RULE message_insert2 as
-	on INSERT to get_messages WHERE msg_parent is not null
+	on INSERT to get_messages WHERE NEW.msg_parent is null
 		DO instead
 		(
 			INSERT INTO messages (msg_author, msg_subject, msg_body) values

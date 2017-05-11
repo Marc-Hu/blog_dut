@@ -36,6 +36,7 @@ switch ($action) {
 		if(isset($_POST['subject']) && isset($_POST['message']) && isset($_POST['author'])){
 			if(trim($_POST['message']) != ""){
 				if(isset($_POST['parent'])){
+					
 					$result = set_message($_POST['subject'], $_POST['message'], $_POST['author'], $_POST['parent']);
 					echo json_encode(["valid"=>$result]);
 				}else{

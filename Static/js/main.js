@@ -31,7 +31,7 @@ $(document).ready(function(){
 		console.log(data);
 		$.post(api, data)
 		.success(function(data){
-
+			location.reload();
 		})
 		.fail(function(data){
 

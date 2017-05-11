@@ -222,7 +222,7 @@ function get_subjectByTagId($id){
 
 function set_message($subject, $message, $author, $parent=""){
     
-    if(!is_null($parent) && $parent != "NaN"){
+    if(!is_null($parent) && $parent != "NaN" && $parent != ""){
         $request = "SELECT * FROM ajoutMessage(:parent,:auteur,:sujet,:contenu)";
         $pdo = SPDO::getBD();
         $stmt = $pdo->prepare($request);
