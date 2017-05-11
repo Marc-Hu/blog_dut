@@ -125,14 +125,16 @@ create or replace function ajoutPostAvecTag(in titre varchar, in tagNum integer)
 Returns void AS
 $$
   INSERT INTO get_sujets(suj_name, suj_tag) VALUES (titre, tagNum);
-$$ language sql;
+$$ language sql
+security definer;
 
 --ajout d'un post sans tag
 create or replace function ajoutPostSansTag(in titre varchar)
 Returns void AS
 $$
   INSERT INTO get_sujets(suj_name, suj_tag) VALUES (titre, null);
-$$ language sql;
+$$ language sql
+security definer;
 
 --ajout d'un message
 create or replace function ajoutMessage(in parent integer, in auteur integer, in sujet integer, in contenu text)

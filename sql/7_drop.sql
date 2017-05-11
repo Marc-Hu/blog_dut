@@ -20,6 +20,7 @@ drop function if exists messages_sujet(integer);
 drop function if exists sujet_tag(integer);
 drop function if exists meme_username_dans_bdd(varchar);
 drop function if exists meme_email_dans_bdd(varchar);
+drop function if exists ajoutMessage_no_parent(integer, integer, text);
 
 -- RULE
 drop RULE if exists member_insert_1 on get_members;
