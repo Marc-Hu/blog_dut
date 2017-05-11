@@ -21,20 +21,35 @@ if(isset($_SESSION['id_user'])){
 	?>
 	<p>
 	<p>
+	<p id="nom">
 	Name : 
 	<?php
 		if(isset($information->name))
 			echo "$information->name";
 	?>
-	<p>
-	<p>
+	<div>
+	<span style="color: #3D5AFE" class="boutonModif" value="nom">Modifier le Nom</span>
+	<div class="modifier">
+	<input type="text" placeholder="nom">
+	<button id="modifierNom" class="btn btn-primary">Modifier</button>
+	</div>
+	</div>
+	</p>
+	<p id="email">
 	Email :
 	<?php
 		if(isset($information->email))
 			echo "$information->email";
 	?>
-	<p>
-	<p>
+	<div>
+	<span style="color: #3D5AFE" class="boutonModif" value="email">Modifier l'email</span>
+	<div class="modifier">
+	<input type="text" placeholder="email">
+	<button id="modifierEmail" class="btn btn-primary">Modifier</button>
+	</div>
+	</div>
+	</p>
+	<p id="desc">
 	Description :
 	<?php 
 		if(isset($information->desc_uti))
@@ -43,7 +58,22 @@ if(isset($_SESSION['id_user'])){
 			echo "pas de description";
 	?>
 	<p>
-
+	<div>
+	<span style="color: #3D5AFE" class="boutonModif" value="desc">Modifier la description</span>
+	<div class="modifier">
+	<input type="text" placeholder="desc">
+	<button id="modifierDesc" class="btn btn-primary">Modifier</button>
+	</div>
+	</div>
+	</p>
+	<div id="mdp">
+	<span style="color: #3D5AFE" class="boutonModif" value="email">Modifier le mot de passe</span>
+	<div class="modifier">
+	<input type="text" placeholder="nouveau mot de passe"><br>
+	<input type="text" placeholder="retaper le mot de passe"><br>
+	<button id="modifierMdp" class="btn btn-primary">Modifier</button>
+	</div>
+	</div>
 	<?php
 		
 	?>
