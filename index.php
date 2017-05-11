@@ -58,6 +58,7 @@ switch ($page) {
 		include_once __DIR__.'/templates/home.php';
 		break;
 }
+
 if(isset($_SESSION['connected']))
 	include_once __DIR__.'/templates/modals.php';
 include_once __DIR__.'/templates/footer.php';
