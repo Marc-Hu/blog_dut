@@ -143,6 +143,20 @@ function get_subject($id){
     }
 }
 
+function get_subject_user($id){
+    $request = "SELECT * FROM get_subject_user(:id)";
+    $pdo = SPDO::getBD();
+    $stmt = $pdo->prepare($request);
+    $stmt->bindValue(':id', $id);
+
+    // éxécution
+    if($stmt->execute()){
+        return $stmt->fetchAll(\PDO::FETCH_OBJ);
+    }else{
+        throw new exception(__FUNCTION__.' Erreur SQL : '.$req);
+    }
+}
+
 function get_messages($id_sujet){
     $request = "SELECT * FROM messages_sujet(:id)";
     $pdo = SPDO::getBD();
@@ -235,20 +249,18 @@ function set_message($subject, $message, $author, $parent=""){
     }
 }
 
-function add_subject($name, $tag=""){
+function add_subject($name, $user_id,$tag=""){
+    $pdo = SPDO::getBD();
     if(trim($tag) != ""){
-        $request = "SELECT * FROM ajoutPostAvecTag(:name, :tag)";
-        $pdo = SPDO::getBD();
+        $request = "SELECT * FROM ajoutPostAvecTag(:name, :tag, :id)";
         $stmt = $pdo->prepare($request);
-        $stmt->bindValue(':name', $name);
         $stmt->bindValue(':tag', $tag);
     }else{
         $request = "SELECT * FROM ajoutPostSansTag(:name)";
-        $pdo = SPDO::getBD();
-        $stmt = $pdo->prepare($request);
-        $stmt->bindValue(':name', $name);
+        $stmt = $pdo->prepare($request);   
     }
-    
+    $stmt->bindValue(':name', $name);
+    $stmt->bindValue(':id', (int)$user_id);
     if($stmt->execute()){
         return true;
     }else{

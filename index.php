@@ -15,10 +15,7 @@ if(!isset($_SESSION['connected'])){
           <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Action<span class='caret'></span></a>
           <ul class='dropdown-menu'>
             <li><a data-toggle='modal' data-target='#addSubject'>Ajouter sujet</a></li>
-            <li><a href='#'>Voir un sujet</a></li>
-            <li><a href='#'>Something else here</a></li>
-            <li role='separator' class='divider'></li>
-            <li><a href='#'>Separated link</a></li>
+            <li><a href='/index.php?page=msub'>Voir mes sujets</a></li>
           </ul>
         </li>
 	";
@@ -53,6 +50,9 @@ switch ($page) {
 		break;
 	case 'bytag':
 		include_once __DIR__.'/templates/bytag.php';
+		break;
+	case 'msub':
+		include_once __DIR__.'/templates/mySubject.php';
 		break;
 	default:
 		include_once __DIR__.'/templates/home.php';

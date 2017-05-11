@@ -11,18 +11,16 @@ drop function if exists modifDesc(varchar, text);
 drop function if exists modifMessage(integer, text);
 drop function if exists modifPassword(varchar, varchar);
 drop function if exists modifEmail(varchar, varchar);
-drop function if exists ajoutPostAvecTag(varchar, integer);
-drop function if exists ajoutPostSanstag(varchar);
+drop function if exists ajoutPostAvecTag(varchar, integer, integer);
+drop function if exists ajoutPostSanstag(varchar, integer);
 drop function if exists ajoutMessage(integer, integer, integer, text);
 drop function if exists ajoutMessage_no_parent(integer, integer, text);
 drop function if exists messages_fils(integer);
 drop function if exists messages_sujet(integer);
 drop function if exists sujet_tag(integer);
-drop function if exists meme_username_dans_bdd(varchar);
-drop function if exists meme_email_dans_bdd(varchar);
 drop function if exists ajoutMessage_no_parent(integer, integer, text);
 
--- RULE
+-- drop RULE
 drop RULE if exists member_insert_1 on get_members;
 drop RULE if exists member_insert_2 on get_members;
 drop RULE if exists member_insert_3 on get_members;
@@ -35,6 +33,9 @@ drop RULE if exists message_insert1 on get_messages;
 drop RULE if exists message_insert2 on get_messages;
 drop RULE if exists message_insert3 on get_messages;
 
+-- drop FUNCTION (dependency)
+drop function if exists meme_username_dans_bdd(varchar);
+drop function if exists meme_email_dans_bdd(varchar);
 
 -- drop view
 drop view if exists get_sujets;
