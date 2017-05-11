@@ -36,7 +36,7 @@ $(document).ready(function(){
 		$.post(api, data)
 		.success(function(data){
 			if(data.valid==true){
-				document.location.href= "/index.php?page=msub";
+				document.location.href= "/";
 			}
 		}).fail(function(e){
 			console.log(e);

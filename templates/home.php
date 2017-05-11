@@ -61,9 +61,7 @@ if($sujets != false && $pag->pagination == 0)
           </nav>
       </div>
     </div>
-    <div class="col-sm-4">
-      <div class="box"></div>
-    </div>
+    
     <div class="col-sm-4">
       <div class="box">
         <h2>Les Tags</h2>
