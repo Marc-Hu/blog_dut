@@ -52,10 +52,10 @@ switch ($action) {
 
 	case 'add_subject':
 		
-		if(isset($_POST['nom']) && isset($_POST['tag'])){
-			echo json_encode(["valid"=>add_subject($_POST['nom'],$_POST['tag'])]);
-		}else if(isset($_POST['nom'])){
-			echo json_encode(["valid"=>add_subject($_POST['nom'])]);
+		if(isset($_POST['nom']) && isset($_POST['tag']) && isset($_POST['id_user'])){
+			echo json_encode(["valid"=>add_subject($_POST['nom'],$_POST['id_user'],$_POST['tag'])]);
+		}else if(isset($_POST['nom']) && isset($_POST['id_user'])){
+			echo json_encode(["valid"=>add_subject($_POST['nom'],$_POST['id_user'])]);
 		}
 		break;
 	

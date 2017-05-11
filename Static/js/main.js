@@ -27,19 +27,20 @@ $(document).ready(function(){
 
 		var data = {
 			"action": "add_subject",
-			"nom": nom
+			"nom": nom,
+			"id_user": $('#user_id_modal').val()
 		};
 		if($.trim(tag) != '')
 			data['tag'] = tag;
 
 		$.post(api, data)
 		.success(function(data){
-			console.log(data);
+			if(data.valid==true){
+				document.location.href= "/index.php?page=msub";
+			}
 		}).fail(function(e){
-
+			console.log(e);
 		});
-		
-
 
 	});
 

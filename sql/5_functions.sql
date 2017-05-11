@@ -6,7 +6,8 @@ CREATE OR REPLACE FUNCTION get_sujet_by_part(min int)
     hide boolean,
     created_at timestamp,
     updated_at timestamp,
-    tag integer
+    tag integer,
+    author integer
   	) AS
 $$
 BEGIN
@@ -37,6 +38,14 @@ $$
   SELECT suj_name, suj_created_at, suj_updated_at, suj_tag 
     FROM get_sujets
       WHERE suj_id=$1;
+$$ language SQL;
+
+CREATE OR REPLACE FUNCTION get_subject_user(in id integer)
+RETURNS TABLE (id integer, nom varchar, crea timestamp, modif timestamp, tag integer) AS
+$$
+  SELECT suj_author, suj_name, suj_created_at, suj_updated_at, suj_tag 
+    FROM get_sujets
+      WHERE suj_author=$1;
 $$ language SQL;
 
 CREATE OR REPLACE FUNCTION get_member_by_id(in id int)
@@ -121,18 +130,18 @@ $$ language sql
 security definer;
 
 --ajout d'un post avec un tag
-create or replace function ajoutPostAvecTag(in titre varchar, in tagNum integer)
+create or replace function ajoutPostAvecTag(in titre varchar, in tagNum integer, in author integer)
 Returns void AS
 $$
-  INSERT INTO get_sujets(suj_name, suj_tag) VALUES (titre, tagNum);
+  INSERT INTO get_sujets(suj_name, suj_tag, suj_author) VALUES (titre, tagNum, author);
 $$ language sql
 security definer;
 
 --ajout d'un post sans tag
-create or replace function ajoutPostSansTag(in titre varchar)
+create or replace function ajoutPostSansTag(in titre varchar, in author integer)
 Returns void AS
 $$
-  INSERT INTO get_sujets(suj_name, suj_tag) VALUES (titre, null);
+  INSERT INTO get_sujets(suj_name, suj_author) VALUES (titre, author);
 $$ language sql
 security definer;
 

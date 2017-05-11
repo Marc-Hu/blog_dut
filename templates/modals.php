@@ -25,6 +25,7 @@
           echo "</select></div>";
         ?>
       </div>
+      
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
         <button type="button" class="btn btn-primary" id='ajoutS-btn'>Ajouter</button>
@@ -32,3 +33,5 @@
     </div>
   </div>
 </div>
+
+<input type="text" id="user_id_modal" value="<?php if(isset($_SESSION['connected'])) echo $_SESSION['id_user']; ?>" hidden>

@@ -6,16 +6,6 @@ create table tag(
     name varchar(50)
 );
 
--- table sujets
-create table sujet(
-    suj_id serial primary key,
-    suj_name varchar(255),
-    suj_hide boolean DEFAULT false,
-    suj_created_at timestamp default current_timestamp,
-    suj_updated_at timestamp default current_timestamp,
-    suj_tag integer references tag null
-);
-
 -- table members
 create table members(
     mem_id serial primary key,
@@ -26,6 +16,17 @@ create table members(
     personal_desc text default null,
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp
+);
+
+-- table sujets
+create table sujet(
+    suj_id serial primary key,
+    suj_name varchar(255),
+    suj_hide boolean DEFAULT false,
+    suj_created_at timestamp default current_timestamp,
+    suj_updated_at timestamp default current_timestamp,
+    suj_tag integer references tag null,
+    suj_author integer references members not null
 );
 
 -- table messsages
