@@ -6,7 +6,6 @@ if(!isset($_SESSION['connected'])){
 
 if(isset($_SESSION['id_user'])){
 	$information = get_member($_SESSION['id_user']);
-	debug($information);
 }
 
 ?>

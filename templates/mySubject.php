@@ -1,7 +1,7 @@
 <?php
 
 // on récupère les sujet avec la position du curseur
-$sujets = mySubject($_SESSION['id_user']);
+$sujets = get_subject_user($_SESSION['id_user']);
 
 
 ?>

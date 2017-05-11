@@ -41,7 +41,7 @@ $$
 $$ language SQL;
 
 CREATE OR REPLACE FUNCTION get_subject_user(in id integer)
-RETURNS TABLE (id integer, nom varchar, crea timestamp, modif timestamp, tag integer) AS
+RETURNS TABLE (id integer, name varchar, created_at timestamp, updated_at timestamp, tag integer) AS
 $$
   SELECT suj_author, suj_name, suj_created_at, suj_updated_at, suj_tag 
     FROM get_sujets
