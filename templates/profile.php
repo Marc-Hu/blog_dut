@@ -43,4 +43,8 @@ if(isset($_SESSION['id_user'])){
 			echo "pas de description";
 	?>
 	<p>
+
+	<?php
+		
+	?>
 </div>

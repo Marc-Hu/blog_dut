@@ -42,7 +42,7 @@ $(document).ready(function(){
 
 // action inscription
 function action_inscription(){
-	console.log("banana");
+	
 	// gestion du champ comfirmation mdp
 	function valid_password(){
 		var pass = $('#password').val();
