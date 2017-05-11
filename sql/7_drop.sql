@@ -19,6 +19,7 @@ drop function if exists messages_fils(integer);
 drop function if exists messages_sujet(integer);
 drop function if exists sujet_tag(integer);
 drop function if exists ajoutMessage_no_parent(integer, integer, text);
+drop function if exists get_subject_user(integer);
 
 -- drop RULE
 drop RULE if exists member_insert_1 on get_members;
