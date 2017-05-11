@@ -53,32 +53,35 @@ if($sujets != false){
 				}
 			}
 			if(isset($_SESSION['connected'])){
-				$affichage_mess .= "<div class='add-message'>
+				$affichage_mess .= "<div><button class='btn btn-primary repondre'>Repondre</button>
+				<div class='add-message'>
 					<div class='form-group'>
 						<textarea class='new-message form-control' rows='3'></textarea>
 					</div>
 					<button class='poster' data-subject=".$_GET['id']." data-parent=".$message->id.">Poster</button>
-				</div>";
+				</div></div>";
 			}
 			$affichage_mess .= "</div>";
 		}
 		if(isset($_SESSION['connected'])){
-			$affichage_mess .= "<div class='add-message'>
+			$affichage_mess .= "<div><button class='btn btn-primary repondre'>Repondre</button>
+			<div class='add-message'>
 				<div class='form-group'>
 					<textarea class='new-message form-control' rows='3'></textarea>
 				</div>
 				<button class='poster' data-subject=".$_GET['id'].">Poster</button>
-			</div>";
+			</div></div>";
 		}
 	}else{
 		$affichage_mess .= "<p class='not-found'>Il n'y a pas de message<p>";
 		if(isset($_SESSION['connected'])){
-			$affichage_mess .= "<div class='add-message'>
+			$affichage_mess .= "<div><button class='btn btn-primary repondre'>Repondre</button>
+			<div class='add-message'>
 				<div class='form-group'>
 					<textarea class='new-message form-control' rows='3'></textarea>
 				</div>
 				<button class='poster' data-subject=".$_GET['id'].">Poster</button>
-			</div>";
+			</div></div>";
 		}
 	}
 }else{
