@@ -58,7 +58,7 @@ if($sujets != false){
 					<div class='form-group'>
 						<textarea class='new-message form-control' rows='3'></textarea>
 					</div>
-					<button class='poster' data-subject=".$_GET['id']." data-parent=".$message->id.">Poster</button>
+					<button class='btn btn-primary poster' data-subject=".$_GET['id']." data-parent=".$message->id.">Poster</button>
 				</div></div>";
 			}
 			$affichage_mess .= "</div>";
@@ -69,7 +69,7 @@ if($sujets != false){
 				<div class='form-group'>
 					<textarea class='new-message form-control' rows='3'></textarea>
 				</div>
-				<button class='poster' data-subject=".$_GET['id'].">Poster</button>
+				<button class='btn btn-primary poster' data-subject=".$_GET['id'].">Poster</button>
 			</div></div>";
 		}
 	}else{
@@ -80,7 +80,7 @@ if($sujets != false){
 				<div class='form-group'>
 					<textarea class='new-message form-control' rows='3'></textarea>
 				</div>
-				<button class='poster' data-subject=".$_GET['id'].">Poster</button>
+				<button class='btn btn-primary poster' data-subject=".$_GET['id'].">Poster</button>
 			</div></div>";
 		}
 	}
