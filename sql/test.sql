@@ -9,7 +9,7 @@ INSERT INTO tag(name) VALUES
 
 INSERT INTO members(username, name, email, password, personal_desc) values
 ('bigfan', 'tony', 'tony@merde.com', 'testtest', 'Et merde !'),
-('geron', 'marc', 'marc@merde.com', 'testtest', 'Et les merdeux !'),
+('geron', 'marc', 'marc@merde.com', '19951201', 'Et les merdeux !'),
 ('skyro', 'steeve', 'steeve@merde.com', 'testtest', 'C est merdoyant !'),
 ('fragile', 'bastien', 'bastien@merde.com', 'testtest', '#JeSuisFragile');
 
