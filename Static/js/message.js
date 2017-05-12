@@ -31,7 +31,8 @@ $(document).ready(function() {
     $('#modifierNom').on('click', function(e) {
 
         var data = {
-            "username": $('#user_id').val(),
+            "action": 'modifNom',
+            "userid": $('#user_id').val(),
             "nom": $(this).parent().find('input').val()
         };
         $.post(api, data)
@@ -45,7 +46,8 @@ $(document).ready(function() {
 
     $('#modifierEmail').on('click', function(e) {
         var data = {
-            "username": $('#user_id').val(),
+            "action": 'modifEmail',
+            "userid": $('#user_id').val(),
             "email": $(this).parent().find('input').val()
         };
         $.post(api, data)
@@ -59,7 +61,8 @@ $(document).ready(function() {
 
     $('#modifierDesc').on('click', function(e) {
         var data = {
-            "username": $('#user_id').val(),
+            "action": 'modifDesc',
+            "userid": $('#user_id').val(),
             "desc": $(this).parent().find('input').val()
         };
         $.post(api, data)
@@ -73,7 +76,8 @@ $(document).ready(function() {
 
     $('#modifierMdp').on('click', function(e) {
         var data = {
-            "username": $('#user_id').val(),
+            "action": 'modifMdp',
+            "userid": $('#user_id').val(),
             "mdp": $(this).parent().find('input').val()
         };
 
