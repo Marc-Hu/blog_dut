@@ -40,7 +40,7 @@
               ";
           }else{
             echo "<li><a href='#'>".$_SESSION['username']."</a></li>
-              <li><a href='/index.php?page=logout'>Déconnecter</a></li>
+              <li><a href='/index.php?page=logout'><div class='lienNavDeco'>Déconnecter</div></a></li>
             ";
           }
         ?>

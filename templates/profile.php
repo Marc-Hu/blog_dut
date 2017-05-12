@@ -28,10 +28,10 @@ if(isset($_SESSION['id_user'])){
 			echo "$information->name";
 	?>
 	<div>
-	<span style="color: #3D5AFE" class="boutonModif" value="nom">Modifier le Nom</span>
+	<span style="color: #3D5AFE" class="boutonModif" value="nom">Modifier le Nom</span><br><br>
 	<div class="modifier">
-	<input type="text" placeholder="nom" class="form-control">
-	<button id="modifierNom" class="btn btn-primary">Soumettre</button>
+	<input type="text" placeholder="Nouveau nom" class="form-control"><br>
+	<button id="modifierNom" class="btn btn-primary">Soumettre</button><br><br>
 	</div>
 	</div>
 	</p>
@@ -42,10 +42,10 @@ if(isset($_SESSION['id_user'])){
 			echo "$information->email";
 	?>
 	<div>
-	<span style="color: #3D5AFE" class="boutonModif" value="email">Modifier l'email</span>
+	<span style="color: #3D5AFE" class="boutonModif" value="email">Modifier l'email</span><br><br>
 	<div class="modifier">
-	<input type="text" placeholder="email" class="form-control">
-	<button id="modifierEmail" class="btn btn-primary">Soumettre</button>
+	<input type="text" placeholder="Nouvelle email" class="form-control"><br>
+	<button id="modifierEmail" class="btn btn-primary">Soumettre</button><br><br>
 	</div>
 	</div>
 	</p>
@@ -59,19 +59,19 @@ if(isset($_SESSION['id_user'])){
 	?>
 	<p>
 	<div>
-	<span style="color: #3D5AFE" class="boutonModif" value="desc">Modifier la description</span>
+	<span style="color: #3D5AFE" class="boutonModif" value="desc">Modifier la description</span><br><br>
 	<div class="modifier">
-	<input type="text" placeholder="description" class="form-control">
-	<button id="modifierDesc" class="btn btn-primary">Soumettre</button>
+	<input type="text" placeholder="Nouvelle description" class="form-control"><br>
+	<button id="modifierDesc" class="btn btn-primary">Soumettre</button><br><br>
 	</div>
 	</div>
 	</p>
 	<div id="mdp">
-	<span style="color: #3D5AFE" class="boutonModif" value="email">Modifier le mot de passe</span>
+	<span style="color: #3D5AFE" class="boutonModif" value="email">Modifier le mot de passe</span><br><br>
 	<div class="modifier">
-	<input type="password" placeholder="nouveau mot de passe" class="form-control"><br>
-	<input type="password" placeholder="retaper le mot de passe" class="form-control"><br>
-	<button id="modifierMdp" class="btn btn-primary">Soumettre</button>
+	<input type="password" placeholder="Nouveau mot de passe" class="form-control"><br>
+	<input type="password" placeholder="Confirmez le mot de passe" class="form-control"><br>
+	<button id="modifierMdp" class="btn btn-primary">Soumettre</button><br><br>
 	</div>
 	</div>
 	<?php
