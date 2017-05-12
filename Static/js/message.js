@@ -34,6 +34,13 @@ $(document).ready(function() {
             "username": $('#user_id').val(),
             "nom": $(this).parent().find('input').val()
         };
+        $.post(api, data)
+            .success(function(data) {
+                location.reload();
+            })
+            .fail(function(data) {
+
+            });
     });
 
     $('#modifierEmail').on('click', function(e) {
@@ -41,6 +48,13 @@ $(document).ready(function() {
             "username": $('#user_id').val(),
             "email": $(this).parent().find('input').val()
         };
+        $.post(api, data)
+            .success(function(data) {
+                location.reload();
+            })
+            .fail(function(data) {
+
+            });
     });
 
     $('#modifierDesc').on('click', function(e) {
@@ -48,6 +62,13 @@ $(document).ready(function() {
             "username": $('#user_id').val(),
             "desc": $(this).parent().find('input').val()
         };
+        $.post(api, data)
+            .success(function(data) {
+                location.reload();
+            })
+            .fail(function(data) {
+
+            });
     });
 
     $('#modifierMdp').on('click', function(e) {
@@ -55,5 +76,18 @@ $(document).ready(function() {
             "username": $('#user_id').val(),
             "mdp": $(this).parent().find('input').val()
         };
+
+        $.post(api, data)
+            .success(function(data) {
+                location.reload();
+            })
+            .fail(function(data) {
+
+            });
     });
+
+    $('#ajouterSujet').on('mouseover', function(e) {
+        $(this).css("cursor", "pointer");
+    });
+
 });

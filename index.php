@@ -14,7 +14,7 @@ if(!isset($_SESSION['connected'])){
 		<li class='dropdown'>
           <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Action<span class='caret'></span></a>
           <ul class='dropdown-menu'>
-            <li><a data-toggle='modal' data-target='#addSubject'>Ajouter sujet</a></li>
+            <li><a data-toggle='modal' data-target='#addSubject' id='ajouterSujet'>Ajouter sujet</a></li>
             <li><a href='/index.php?page=msub'>Voir mes sujets</a></li>
           </ul>
         </li>
