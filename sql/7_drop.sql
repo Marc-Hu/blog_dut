@@ -14,12 +14,14 @@ drop function if exists modifEmail(varchar, varchar);
 drop function if exists ajoutPostAvecTag(varchar, integer, integer);
 drop function if exists ajoutPostSanstag(varchar, integer);
 drop function if exists ajoutMessage(integer, integer, integer, text);
-drop function if exists ajoutMessage_no_parent(integer, integer, text);
 drop function if exists messages_fils(integer);
 drop function if exists messages_sujet(integer);
 drop function if exists sujet_tag(integer);
 drop function if exists ajoutMessage_no_parent(integer, integer, text);
 drop function if exists get_subject_user(integer);
+drop function if exists ajoutPostAvecTag(varchar, varchar, integer);
+drop function if exists ajoutPostSansTag(varchar, integer);
+drop function if exists ajoutMessage_no_parent(integer, integer, text);
 
 -- drop RULE
 drop RULE if exists member_insert_1 on get_members;

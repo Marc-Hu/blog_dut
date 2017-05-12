@@ -5,6 +5,7 @@ INSERT INTO tag(name) VALUES
 ('Chevaux'),
 ('Moustique'),
 ('Fourmi'),
+('Loisirs'),
 ('Rat');
 
 INSERT INTO members(username, name, email, password, personal_desc) values
