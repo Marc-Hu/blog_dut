@@ -32,12 +32,12 @@ $(document).ready(function() {
 
         var data = {
             "action": 'modifNom',
-            "userid": $('#user_id').val(),
+            "userid": $('#user_id_modal').val(),
             "nom": $(this).parent().find('input').val()
         };
         $.post(api, data)
             .success(function(data) {
-                location.reload();
+
             })
             .fail(function(data) {
 
@@ -47,12 +47,12 @@ $(document).ready(function() {
     $('#modifierEmail').on('click', function(e) {
         var data = {
             "action": 'modifEmail',
-            "userid": $('#user_id').val(),
+            "userid": $('#user_id_modal').val(),
             "email": $(this).parent().find('input').val()
         };
         $.post(api, data)
             .success(function(data) {
-                location.reload();
+
             })
             .fail(function(data) {
 
@@ -62,12 +62,12 @@ $(document).ready(function() {
     $('#modifierDesc').on('click', function(e) {
         var data = {
             "action": 'modifDesc',
-            "userid": $('#user_id').val(),
+            "userid": $('#user_id_modal').val(),
             "desc": $(this).parent().find('input').val()
         };
         $.post(api, data)
             .success(function(data) {
-                location.reload();
+
             })
             .fail(function(data) {
 
@@ -77,13 +77,13 @@ $(document).ready(function() {
     $('#modifierMdp').on('click', function(e) {
         var data = {
             "action": 'modifMdp',
-            "userid": $('#user_id').val(),
+            "userid": $('#user_id_modal').val(),
             "mdp": $(this).parent().find('input').val()
         };
 
         $.post(api, data)
             .success(function(data) {
-                location.reload();
+
             })
             .fail(function(data) {
 
