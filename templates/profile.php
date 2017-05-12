@@ -30,7 +30,7 @@ if(isset($_SESSION['id_user'])){
 	<span style="color: #3D5AFE" class="boutonModif" value="nom">Modifier le Nom</span>
 	<div class="modifier">
 	<input type="text" placeholder="nom">
-	<button id="modifierNom" class="btn btn-primary">Modifier</button>
+	<button id="modifierNom" class="btn btn-primary">Soumettre</button>
 	</div>
 	</div>
 	</p>
@@ -44,7 +44,7 @@ if(isset($_SESSION['id_user'])){
 	<span style="color: #3D5AFE" class="boutonModif" value="email">Modifier l'email</span>
 	<div class="modifier">
 	<input type="text" placeholder="email">
-	<button id="modifierEmail" class="btn btn-primary">Modifier</button>
+	<button id="modifierEmail" class="btn btn-primary">Soumettre</button>
 	</div>
 	</div>
 	</p>
@@ -61,7 +61,7 @@ if(isset($_SESSION['id_user'])){
 	<span style="color: #3D5AFE" class="boutonModif" value="desc">Modifier la description</span>
 	<div class="modifier">
 	<input type="text" placeholder="desc">
-	<button id="modifierDesc" class="btn btn-primary">Modifier</button>
+	<button id="modifierDesc" class="btn btn-primary">Soumettre</button>
 	</div>
 	</div>
 	</p>
@@ -70,7 +70,7 @@ if(isset($_SESSION['id_user'])){
 	<div class="modifier">
 	<input type="text" placeholder="nouveau mot de passe"><br>
 	<input type="text" placeholder="retaper le mot de passe"><br>
-	<button id="modifierMdp" class="btn btn-primary">Modifier</button>
+	<button id="modifierMdp" class="btn btn-primary">Soumettre</button>
 	</div>
 	</div>
 	<?php
