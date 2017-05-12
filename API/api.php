@@ -59,6 +59,26 @@ switch ($action) {
 		}
 		break;
 	
+	case 'modifNom':
+		if(isset($_POST['userid']) && $_POST['nom'])){
+			echo json_encode(["valid"=>addNom($_POST['nom'],$_POST['userid'])]);
+		}
+		break;
+	case 'modifEmail':
+		if(isset($_POST['userid']) && $_POST['email'])){
+			echo json_encode(["valid"=>addEmail($_POST['email'],$_POST['userid'])]);
+		}
+		break;
+	case 'modifDesc':
+		if(isset($_POST['userid']) && $_POST['desc'])){
+			echo json_encode(["valid"=>addDesc($_POST['desc'],$_POST['userid'])]);
+		}
+		break;
+	case 'modifMdp':
+		if(isset($_POST['userid']) && $_POST['mdp'])){
+			echo json_encode(["valid"=>addMdp($_POST['mdp'],$_POST['userid'])]);
+		}
+		break;
 	default:
 		include_once __DIR__.'/../templates/header.php';
 		include_once __DIR__.'/../templates/footer.php';

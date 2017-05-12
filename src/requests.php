@@ -267,3 +267,59 @@ function add_subject($name, $user_id,$tag=""){
         throw new exception(__FUNCTION__.' Erreur SQL : '.$req);
     }
 }
+
+function modifNom($userid, $val){
+    $pdo = SPDO::getBD();
+    $request = "SELECT * FROM modifName(:id, :val)";
+    $stmt = $pdo->prepare($request);
+   
+    $stmt->bindValue(':val', $val);
+    $stmt->bindValue(':id', (int)$userid);
+    if($stmt->execute()){
+        return true;
+    }else{
+        throw new exception(__FUNCTION__.' Erreur SQL : '.$req);
+    }
+}
+
+function modifMdp($userid, $val){
+    $pdo = SPDO::getBD();
+    $request = "SELECT * FROM modifPassword(:id, :val)";
+    $stmt = $pdo->prepare($request);
+   
+    $stmt->bindValue(':val', $val);
+    $stmt->bindValue(':id', (int)$userid);
+    if($stmt->execute()){
+        return true;
+    }else{
+        throw new exception(__FUNCTION__.' Erreur SQL : '.$req);
+    }
+}
+
+function modifEmail($userid, $val){
+    $pdo = SPDO::getBD();
+    $request = "SELECT * FROM modifEmail(:id, :val)";
+    $stmt = $pdo->prepare($request);
+   
+    $stmt->bindValue(':val', $val);
+    $stmt->bindValue(':id', (int)$userid);
+    if($stmt->execute()){
+        return true;
+    }else{
+        throw new exception(__FUNCTION__.' Erreur SQL : '.$req);
+    }
+}
+
+function modifDesc($userid, $val){
+    $pdo = SPDO::getBD();
+    $request = "SELECT * FROM modifDesc(:id, :val)";
+    $stmt = $pdo->prepare($request);
+   
+    $stmt->bindValue(':val', $val);
+    $stmt->bindValue(':id', (int)$userid);
+    if($stmt->execute()){
+        return true;
+    }else{
+        throw new exception(__FUNCTION__.' Erreur SQL : '.$req);
+    }
+}
