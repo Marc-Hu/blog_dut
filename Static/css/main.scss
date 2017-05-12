@@ -41,3 +41,64 @@ a{
     background: url("../image/bg.jpg") fixed center;
     background-size: cover;
 }
+
+.boutonModif {
+    width : 20%;
+    padding : 10px;
+    margin-bottom : 30px;
+    border-radius : 5px;
+}
+
+.boutonModif:hover {
+    background : white;
+    box-shadow : 0 0 5px white;
+}
+
+.form-control {
+    width : 30%;
+}
+
+.Ctag {
+    height : 20px;
+    width : 60px;
+    padding : 5px 10px 5px 10px;
+    font-size : 14px;
+    transition : all 0.3s;
+
+}
+
+.Ctag:hover {
+    padding-right : 150px;
+    border : 1px solid white;
+}
+
+.sujet {
+    transition : all 0.3s;
+}
+
+.sujet:hover {
+    box-shadow : 0 0 5px white;
+    font-size : 16px;
+}
+
+.coText {
+    font-size : 18px;
+    color : #D0D2D9;
+}
+
+.btnCo {
+    background : #646567;
+    color : white;
+    padding : 5px 20px 5px 20px;
+    transition : all 0.3s;
+}
+
+.btnCo:hover {
+    background : white;
+    color : black;
+    box-shadow : 0 0 5px #646567;
+}
+
+.lienNavDeco:hover {
+    color : #F33232;
+}

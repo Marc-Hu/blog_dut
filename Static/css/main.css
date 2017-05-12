@@ -1,59 +1,86 @@
-html,
-body {
-    height: 100%;
-}
+html, body {
+  height: 100%; }
 
 .box {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 5% 5% 5% 5%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 60px;
-    margin-bottom: 20px;
-    width: 90%;
-    border-radius: 1%;
-}
-
-.box p,
-.box h2,
-.box h3 {
-    color: #fff;
-}
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5% 5% 5% 5%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  width: 90%;
+  border-radius: 1%; }
+  .box p, .box h2, .box h3 {
+    color: #fff; }
 
 .body-wrapper {
-    background: rgba(0, 0, 0, 0.4) fixed;
-    min-height: 100%;
-}
+  background: rgba(0, 0, 0, 0.4) fixed;
+  min-height: 100%; }
 
 a {
-    text-decoration: none;
-}
-
-a:hover,
-a:active,
-a:visited,
-a:focus {
+  text-decoration: none; }
+  a:hover, a:active, a:visited, a:focus {
     color: #e7e7e7;
-    text-decoration: none;
-}
-
-a p.sujet {
+    text-decoration: none; }
+  a p.sujet {
     margin-top: 2%;
     border-radius: 2%;
     color: #e7e7e7;
     background: rgba(0, 0, 0, 0.8);
     padding: 2% 10%;
-    height: 70px;
-}
+    height: 70px; }
 
 .bg {
-    background: url("../image/bg.jpg") fixed center;
-    background-size: cover;
-}
+  background: url("../image/bg.jpg") fixed center;
+  background-size: cover; }
 
-#profile input {
-    width: 20%;
-}
+.boutonModif {
+  width: 20%;
+  padding: 10px;
+  margin-bottom: 30px;
+  border-radius: 5px; }
 
+.boutonModif:hover {
+  background: white;
+  box-shadow: 0 0 5px white; }
+
+.form-control {
+  width: 30%; }
+
+.Ctag {
+  height: 20px;
+  width: 60px;
+  padding: 5px 10px 5px 10px;
+  font-size: 14px;
+  transition: all 0.3s; }
+
+.Ctag:hover {
+  padding-right: 150px;
+  border: 1px solid white; }
+
+.sujet {
+  transition: all 0.3s; }
+
+.sujet:hover {
+  box-shadow: 0 0 5px white;
+  font-size: 16px; }
+
+.coText {
+  font-size: 18px;
+  color: #D0D2D9; }
+
+.btnCo {
+  background: #646567;
+  color: white;
+  padding: 5px 20px 5px 20px;
+  transition: all 0.3s; }
+
+.btnCo:hover {
+  background: white;
+  color: black;
+  box-shadow: 0 0 5px #646567; }
+
+.lienNavDeco:hover {
+  color: #F33232; }
 
 /*# sourceMappingURL=main.css.map */

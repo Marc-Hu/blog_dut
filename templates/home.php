@@ -64,7 +64,7 @@ if($sujets != false && $pag->pagination == 0)
     
     <div class="col-sm-4">
       <div class="box">
-        <h2>Les Tags</h2>
+        <h2>Les Tags</h2><br>
         <ul class="list-inline">
 			<?php
 				if($tags != false){
@@ -72,9 +72,9 @@ if($sujets != false && $pag->pagination == 0)
 					foreach ($tags as $tag) {
 						echo "<li>
 						  <a href='index.php?page=bytag&id=$tag->tag_id'>
-						    <span class='label label-default'>$tag->tag_id - $tag->name</span>
+						    <span class='label label-default Ctag'>$tag->tag_id - $tag->name</span>
 						  </a>
-						</li>";
+						</li><br><br>";
 					}
 				}
 			?>
