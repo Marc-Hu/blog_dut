@@ -97,35 +97,35 @@ security definer;
 
 
 --Modif desc profil
-create or replace function modifDesc(in nom_utilisateur varchar, in new_desc text)
+create or replace function modifDesc(in nom_utilisateur integer, in new_desc text)
 RETURNS void AS
 $$
-  UPDATE get_members SET desc_uti=new_desc, username=nom_utilisateur where username=nom_utilisateur;
+  UPDATE get_members SET desc_uti=new_desc, mem_id=nom_utilisateur where mem_id=nom_utilisateur;
 $$ language sql
 security definer;
 
 
 --modif name
-create or replace function modifName(in nom_utilisateur varchar, in new_name varchar)
+create or replace function modifName(in nom_utilisateur integer, in new_name varchar)
 RETURNS void AS
 $$
-  UPDATE get_members SET name=new_name, username=nom_utilisateur where username=nom_utilisateur;
+  UPDATE get_members SET name=new_name, mem_id=nom_utilisateur where mem_id=nom_utilisateur;
 $$ language sql
 security definer;
 
 --modif password
-create or replace function modifPassword(in nom_utilisateur varchar, in new_password varchar)
+create or replace function modifPassword(in nom_utilisateur integer, in new_password varchar)
 RETURNS void AS
 $$
-  UPDATE get_members SET password=new_password, username=nom_utilisateur where username=nom_utilisateur;
+  UPDATE get_members SET password=new_password, mem_id=nom_utilisateur where mem_id=nom_utilisateur;
 $$ language sql
 security definer;
 
 --modif email
-create or replace function modifEmail(in nom_utilisateur varchar, in new_email varchar)
+create or replace function modifEmail(in nom_utilisateur integer, in new_email varchar)
 RETURNS void AS
 $$
-  UPDATE get_members SET email=new_email, username=nom_utilisateur where username=nom_utilisateur;
+  UPDATE get_members SET email=new_email, mem_id=nom_utilisateur where mem_id=nom_utilisateur;
 $$ language sql
 security definer;
 

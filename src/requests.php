@@ -275,6 +275,7 @@ function modifNom($userid, $val){
    
     $stmt->bindValue(':val', $val);
     $stmt->bindValue(':id', (int)$userid);
+    
     if($stmt->execute()){
         return true;
     }else{
@@ -289,6 +290,7 @@ function modifMdp($userid, $val){
    
     $stmt->bindValue(':val', $val);
     $stmt->bindValue(':id', (int)$userid);
+    
     if($stmt->execute()){
         return true;
     }else{
